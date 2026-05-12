@@ -44,6 +44,7 @@ miniRT の **実装ブループリント**。要件定義書 `../002-requirement
 | [400-interaction-and-errors.md](./400-interaction-and-errors.md) | 入力モデル / selection / キーボード / マウス click + drag / エラー方針 |
 | [500-roadmap.md](./500-roadmap.md) | Phase A〜H の実装順 / オープン課題 |
 | [600-mlx-cheatsheet.md](./600-mlx-cheatsheet.md) | MiniLibX API シグネチャ + 使う順 + OS 差 |
+| [610-allowed-functions-cheatsheet.md](./610-allowed-functions-cheatsheet.md) | miniRT で使える関数 / 使わないほうがよいもの / 実装判断の早見表 |
 
 ## 関連ドキュメント
 

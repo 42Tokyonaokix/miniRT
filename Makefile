@@ -6,7 +6,7 @@
 #    By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/02 23:20:38 by kesaitou          #+#    #+#              #
-#    Updated: 2026/05/12 21:42:35 by natakaha         ###   ########.fr        #
+#    Updated: 2026/05/13 07:12:01 by natakaha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ LIBFTDIR = libft
 LIBFT = $(LIBFTDIR)/libft.a
 
 LDFLAGS = -L $(LIBFTDIR)
-LDLIBS = -lft
+LDLIBS = -lft -lm
 
 MAND_SRCS = \
 	srcs/main.c \

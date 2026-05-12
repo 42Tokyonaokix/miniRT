@@ -6,14 +6,14 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/12 21:43:56 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/13 07:12:01 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATH_H
 # define MATH_H
 
-# include <math.h>
+# include_next <math.h>
 
 /* ========== Basic Types ========== */
 

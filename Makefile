@@ -6,13 +6,13 @@
 #    By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/02 23:20:38 by kesaitou          #+#    #+#              #
-#    Updated: 2026/05/13 07:12:01 by natakaha         ###   ########.fr        #
+#    Updated: 2026/05/13 12:03:49 by natakaha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = miniRT
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I $(INCS)
+CFLAGS = -Wall -Werror -Wextra -I $(INCS) -I $(LIBFTDIR)/includes
 
 INCS = includes
 LIBFTDIR = libft
@@ -23,10 +23,13 @@ LDLIBS = -lft -lm
 
 MAND_SRCS = \
 	srcs/main.c \
-	srcs/math/vec3_ops.c \
-	srcs/math/vec3_dot_cross.c \
+	srcs/math/vector.c \
+	srcs/math/color.c \
 	srcs/math/color_ops.c \
+	srcs/math/quadratic.c \
 	srcs/math/rodrigues.c \
+	srcs/math/vec3_dot_cross.c \
+	srcs/math/vec3_ops.c \
 	srcs/intersect/find_closest.c \
 	srcs/intersect/ray_sphere.c \
 	srcs/intersect/ray_cylinder.c \
@@ -59,16 +62,30 @@ MAND_SRCS = \
 
 MAND_OBJS = $(MAND_SRCS:.c=.o)
 
-HEADERS = $(wildcard $(INCS)/*.h)
+HEADERS = \
+	includes/app.h \
+	includes/error.h \
+	includes/interact.h \
+	includes/color.h \
+	includes/error.h \
+	includes/interact.h \
+	includes/intersect.h \
+	includes/math_utils.h \
+	includes/memory.h \
+	includes/mlx.h \
+	includes/parser.h \
+	includes/render.h \
+	includes/scene.h \
+	includes/vector
 
 
-all : $(NAME)
+$(NAME) : $(MAND_OBJS) $(LIBFT)
+	$(CC) $(MAND_OBJS) $(LDFLAGS) $(LDLIBS) -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFTDIR)
 
-$(NAME):$(MAND_OBJS) $(LIBFT)
-	$(CC) $(MAND_OBJS) $(LDFLAGS) $(LDLIBS) -o $(NAME)
+all: $(NAME)
 
 bonus: all
 
@@ -78,7 +95,6 @@ bonus: all
 
 clean:
 	rm -f $(MAND_OBJS)
-	find srcs -name '*.d' -delete
 	$(MAKE) -C $(LIBFTDIR) clean
 
 fclean: clean

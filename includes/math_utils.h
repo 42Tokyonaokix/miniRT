@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   math_utils.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/13 11:48:03 by natakaha         ###   ########.fr       */
+/*   Created: 2026/05/13 by natakaha                  #+#    #+#             */
+/*   Updated: 2026/05/13 by natakaha                 ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#ifndef MATH_UTILS_H
+# define MATH_UTILS_H
 
 # include "libft.h"
 # include "ft_printf.h"
 # include "get_next_line.h"
+# include <math.h>
 # include <stdio.h>
-# include <stdlib.h>
 
-/* Forward declaration for app */
-typedef struct s_app		t_app;
+/* ========== Constants ========== */
 
-/* ========== Error Handling ========== */
+# define EPS 1e-6
+# define ERRORNO -1
+/* ========== Numeric Helpers ========== */
 
-void	error_exit(const char *msg, t_app *app);
+double	clamp_double(double v, double lo, double hi);
+
+/* ========== Quadratic Equation Solver ========== */
+
+int		solve_quadratic(double a, double b, double c, double *t0, double *t1);
 
 #endif

@@ -6,13 +6,16 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 22:00:00 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/12 21:35:26 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/13 11:48:03 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCENE_H
 # define SCENE_H
 
+# include "libft.h"
+# include "ft_printf.h"
+# include "get_next_line.h"
 # include "math.h"
 
 typedef enum e_obj_type

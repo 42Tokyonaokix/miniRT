@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 10:33:15 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/13 12:54:29 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/13 23:50:33 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,18 @@ double	quad_min_solutoin(double a, double b, double c)
 	n2 = (-b + sqrt(d)) / (2 * a);
 	if (n1 < 0 && n2 < 0)
 		return (ERRORNO);
-	else if (n1 < 0 || n2 < n1)
+	else if (n1 < 0)
 		return (n2);
-	else if (n2 < 0 || n1 < n2)
+	else if (n2 < 0)
 		return (n1);
-	return (ERRORNO);
+	else if (n1 < n2)
+		return (n1);
+	return (n2);
+}
+
+double	min_double(double d1, double d2)
+{
+	
 }
 
 /* 

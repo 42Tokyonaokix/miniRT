@@ -18,6 +18,7 @@
 # include "get_next_line.h"
 # include <math.h>
 # include <stdio.h>
+# include <stdbool.h>
 
 /* ========== Constants ========== */
 

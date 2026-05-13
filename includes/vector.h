@@ -46,8 +46,9 @@ void	double_print(double n, char *s);
 double	vec3_dot(t_vec3 v1, t_vec3 v2);
 t_vec3	vec3_cross(t_vec3 v1, t_vec3 v2);
 
-/* ========== Vec3 Interpolation ========== */
-
+/* ========== Vec3 hor ver ========== */
+t_vec3	vec3_ver(t_vec3 v, t_vec3 axis);
+t_vec3	vec3_hor(t_vec3 v, t_vec3 axis);
 
 
 /* ========== Vec3 Rotation (Rodrigues) ========== */

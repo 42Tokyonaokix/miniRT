@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/13 18:08:01 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/13 20:41:14 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ typedef struct s_cylinder
     struct s_cylinder  *next;
 }   t_cylinder;
 
+typedef enum e_point_type
+{
+	SIDE,
+	TOP
+}	t_point_type;
+
 typedef enum e_obj_type
 {
 	OBJ_SPHERE,
@@ -69,6 +75,8 @@ typedef struct s_hit
 }   t_hit;
 
 /* ========== Intersection Functions ========== */
+double	ray_plane_t(t_ray ray, t_plane plane);
+double	ray_cylinder_t(t_ray ray, t_cylinder cyl);
 t_hit	ray_plane_hit(t_ray ray, t_plane *plane);
 
 

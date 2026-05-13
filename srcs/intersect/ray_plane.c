@@ -6,20 +6,20 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/13 18:07:57 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/13 19:25:44 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/intersect.h"
 
-static double	ray_find_t(t_ray ray, t_plane plane);
+static double	ray_plane_t(t_ray ray, t_plane plane);
 
 t_hit	ray_plane_hit(t_ray ray, t_plane *plane)
 {
 	double	t;
 	t_hit	hit;
 
-	t = ray_find_t(ray, *plane);
+	t = ray_plane_t(ray, *plane);
 	ft_bzero(&hit, sizeof(t_hit));
 	if (t < 0)
 		return (hit);
@@ -30,7 +30,7 @@ t_hit	ray_plane_hit(t_ray ray, t_plane *plane)
 	return (hit);
 }
 
-static double	ray_find_t(t_ray ray, t_plane plane)
+double	ray_plane_t(t_ray ray, t_plane plane)
 {
 	t_vec3	const_v;
 	double	const_n;
@@ -77,7 +77,7 @@ int	main(int argc, char **argv)
 	plane.normal.z = ft_atoi(argv[12]);
 	plane.normal = vec3_normalize(plane.normal);
 	vec3_print(plane.normal, "plane.normal");
-	hit = ray_find_hit(ray, &plane);
+	hit = ray_plane_hit(ray, &plane);
 	hit_print(hit, "hit");
 } 
 */

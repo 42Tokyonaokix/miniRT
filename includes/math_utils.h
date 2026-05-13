@@ -25,10 +25,10 @@
 # define ERRORNO -1
 /* ========== Numeric Helpers ========== */
 
-double	clamp_double(double v, double lo, double hi);
 
 /* ========== Quadratic Equation Solver ========== */
 
 int		solve_quadratic(double a, double b, double c, double *t0, double *t1);
+double	quadratic_min_solutoin(double a, double b, double c);
 
 #endif

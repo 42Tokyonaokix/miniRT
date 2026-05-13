@@ -6,7 +6,7 @@
 #    By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/02 23:20:38 by kesaitou          #+#    #+#              #
-#    Updated: 2026/05/13 12:03:49 by natakaha         ###   ########.fr        #
+#    Updated: 2026/05/13 12:53:38 by natakaha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ MAND_SRCS = \
 	srcs/math/rodrigues.c \
 	srcs/math/vec3_dot_cross.c \
 	srcs/math/vec3_ops.c \
+	srcs/math/vec3_len.c \
 	srcs/intersect/find_closest.c \
 	srcs/intersect/ray_sphere.c \
 	srcs/intersect/ray_cylinder.c \

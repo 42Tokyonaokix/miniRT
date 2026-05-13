@@ -6,13 +6,13 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 10:33:15 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/13 12:07:55 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/13 12:54:29 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/math_utils.h"
 
-double	quadratic_discriminant(double a, double b, double c)
+double	quad_discriminant(double a, double b, double c)
 {
 	return (b * b - 4 * a * c);
 }
@@ -25,7 +25,7 @@ but if a == 0 or discriminant == 0
 it may return minus value other than ERRORNO.
 */
 
-double	quadratic_min_solutoin(double a, double b, double c)
+double	quad_min_solutoin(double a, double b, double c)
 {
 	double d;
 	double n1;
@@ -33,7 +33,7 @@ double	quadratic_min_solutoin(double a, double b, double c)
 	
 	if (a == 0)
 		return (-c / b);
-	d = quadratic_discriminant(a, b, c);
+	d = quad_discriminant(a, b, c);
 	if (d < -EPS)
 		return (ERRORNO);
 	else if (d < EPS)
@@ -49,6 +49,7 @@ double	quadratic_min_solutoin(double a, double b, double c)
 	return (ERRORNO);
 }
 
+/* 
 int main(int argc, char **argv)
 {
 	double a;
@@ -65,3 +66,4 @@ int main(int argc, char **argv)
 	printf("quadratic_min_solutoin: %f\n", s);
 	return (EXIT_SUCCESS);
 }
+ */

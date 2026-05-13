@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/13 11:48:03 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/13 15:20:44 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@
 # include "ft_printf.h"
 # include "get_next_line.h"
 # include "scene.h"
-# include "math.h"
-
-/* t_hit is defined in math.h as infra-level hit record */
+# include "intersect.h"
 
 /* ========== Camera Functions ========== */
 

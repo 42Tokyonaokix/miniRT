@@ -29,6 +29,6 @@
 /* ========== Quadratic Equation Solver ========== */
 
 int		solve_quadratic(double a, double b, double c, double *t0, double *t1);
-double	quadratic_min_solutoin(double a, double b, double c);
+double	quad_min_solutoin(double a, double b, double c);
 
 #endif

@@ -28,11 +28,4 @@ typedef struct s_color
 
 /* ========== Color Operations ========== */
 
-t_color	color_add(t_color a, t_color b);
-t_color	color_scale(t_color c, double scalar);
-t_color	color_mul(t_color a, t_color b);
-t_color	color_clamp(t_color c);
-int		color_to_int(t_color c);
-t_color	color_from_int(int rgb);
-
 #endif

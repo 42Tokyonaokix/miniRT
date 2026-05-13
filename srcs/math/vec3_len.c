@@ -6,28 +6,30 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 10:33:15 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/13 14:42:25 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/13 17:05:46 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/vector.h"
 
-double	vec3_sq(t_vec3 *v1)
+double	vec3_sq(t_vec3 v1)
 {
-	return ((v1->x * v1->x) + (v1->y * v1->y) + (v1->z * v1->z));
+	return ((v1.x * v1.x) + (v1.y * v1.y) + (v1.z * v1.z));
 }
 
-double	vec3_abs(t_vec3 *v1)
+double	vec3_abs(t_vec3 v1)
 {
 	return (sqrt(vec3_sq(v1)));
 }
 
-t_vec3	vec3_normalize(t_vec3 *v1)
+t_vec3	vec3_normalize(t_vec3 v1)
 {
 	t_vec3	v2;
 	double	n;
 	
 	n = vec3_abs(v1);
+	if (n * n < EPS * EPS)
+		return (ft_bzero(&v2, sizeof(t_vec3)), v2);
 	v2 = vec3_scale(v1, 1 / n);
 	return (v2);
 }

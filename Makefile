@@ -6,24 +6,31 @@
 #    By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/02 23:20:38 by kesaitou          #+#    #+#              #
-#    Updated: 2026/05/13 12:53:38 by natakaha         ###   ########.fr        #
+#    Updated: 2026/05/13 16:36:48 by natakaha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = miniRT
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I $(INCS) -I $(LIBFTDIR)/includes
+CFLAGS = -Wall -Werror -Wextra -I $(INCS) -I $(LIBFTDIR)/includes -I $(MLXDIR)
 
 INCS = includes
 LIBFTDIR = libft
 LIBFT = $(LIBFTDIR)/libft.a
+UNAME_S := $(shell uname)
+ifeq ($(UNAME_S),Darwin)
+MLXDIR = minilibx
+MLX_LIBS = -framework OpenGL -framework AppKit -lm
+else
+MLXDIR = minilibx-linux
+MLX_LIBS = -lXext -lX11 -lm -lz
+endif
+MLX = $(MLXDIR)/libmlx.a
 
-LDFLAGS = -L $(LIBFTDIR)
-LDLIBS = -lft -lm
+LDFLAGS = -L $(LIBFTDIR) -L $(MLXDIR)
+LDLIBS = -lft -lmlx $(MLX_LIBS)
 
-MAND_SRCS = \
-	srcs/main.c \
-	srcs/math/vector.c \
+MAND_SRCS = srcs/main.c \
 	srcs/math/color.c \
 	srcs/math/color_ops.c \
 	srcs/math/quadratic.c \
@@ -80,11 +87,14 @@ HEADERS = \
 	includes/vector
 
 
-$(NAME) : $(MAND_OBJS) $(LIBFT)
+$(NAME) : $(MAND_OBJS) $(LIBFT) $(MLX)
 	$(CC) $(MAND_OBJS) $(LDFLAGS) $(LDLIBS) -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFTDIR)
+
+$(MLX):
+	$(MAKE) -C $(MLXDIR)
 
 all: $(NAME)
 

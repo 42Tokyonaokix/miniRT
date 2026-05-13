@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 22:05:00 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/13 11:48:03 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/13 15:20:44 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,20 @@
 # include "ft_printf.h"
 # include "get_next_line.h"
 # include "scene.h"
+# include "intersect.h"
+
+typedef enum e_select_kind
+{
+    SEL_NONE,
+    SEL_CAMERA,
+    SEL_LIGHT,
+    SEL_OBJECT
+}   t_select_kind;
 
 typedef struct s_selection
 {
-    int         kind;    /* use t_select_kind enum from scene.h if needed */
-    int         obj_type;
+    t_select_kind   kind;
+    t_obj_type      obj_type;
     void        *obj_ptr;
 }   t_selection;
 

@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 22:00:00 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/13 11:48:03 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/13 15:24:38 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,40 +16,9 @@
 # include "libft.h"
 # include "ft_printf.h"
 # include "get_next_line.h"
+# include "vector.h"
+# include "color.h"
 # include "math.h"
-
-typedef enum e_obj_type
-{
-    OBJ_SPHERE,
-    OBJ_PLANE,
-    OBJ_CYLINDER
-}   t_obj_type;
-
-typedef struct s_sphere
-{
-    t_vec3          center;
-    double          radius;
-    t_color         color;
-    struct s_sphere *next;
-}   t_sphere;
-
-typedef struct s_plane
-{
-    t_vec3          point;
-    t_vec3          normal;
-    t_color         color;
-    struct s_plane  *next;
-}   t_plane;
-
-typedef struct s_cylinder
-{
-    t_vec3              center;
-    t_vec3              axis;
-    double              radius;
-    double              height;
-    t_color             color;
-    struct s_cylinder  *next;
-}   t_cylinder;
 
 typedef struct s_ambient
 {

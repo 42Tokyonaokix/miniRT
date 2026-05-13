@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 10:33:15 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/13 14:19:41 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/13 14:42:25 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_vec3	vec3_normalize(t_vec3 *v1)
 
 void	double_print(double n, char *s)
 {
-	printf("===\033[31m%s\033[0m: \033[34mdouble_print\033[0m===\n", s);
+	printf("===\033[34mdouble_print\033[0m: \033[31m%s\033[0m===\n", s);
 	printf("%s: %f\n", s, n);
 	ft_putendl_fd("", 1);
 }

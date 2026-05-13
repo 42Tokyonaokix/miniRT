@@ -38,6 +38,7 @@ t_vec3	vec3_normalize(t_vec3 *v1);
 
 /* ========== Vec3 print ========== */
 void	vec3_print(t_vec3 *v1, char *s);
+void	double_print(double n, char *s);
 
 /* ========== Vec3 Dot & Cross ========== */
 

@@ -23,10 +23,10 @@ int	parse_sphere(char **tok, t_sphere **spheres)
 	node = malloc(sizeof(t_sphere));
 	if (!node)
 		return (ft_dprintf(2, "Memory allocation failed\n"), 0);
-	node->next = NULL;
 	if (!fill_sphere(tok, node))
 		return (free(node), 0);
-	list_append((void **)spheres, node);
+	node->next = *spheres;
+	*spheres = node;
 	return (1);
 }
 
@@ -39,10 +39,10 @@ int	parse_plane(char **tok, t_plane **planes)
 	node = malloc(sizeof(t_plane));
 	if (!node)
 		return (ft_dprintf(2, "Memory allocation failed\n"), 0);
-	node->next = NULL;
 	if (!fill_plane(tok, node))
 		return (free(node), 0);
-	list_append((void **)planes, node);
+	node->next = *planes;
+	*planes = node;
 	return (1);
 }
 
@@ -55,10 +55,10 @@ int	parse_cylinder(char **tok, t_cylinder **cylinders)
 	node = malloc(sizeof(t_cylinder));
 	if (!node)
 		return (ft_dprintf(2, "Memory allocation failed\n"), 0);
-	node->next = NULL;
 	if (!fill_cylinder(tok, node))
 		return (free(node), 0);
-	list_append((void **)cylinders, node);
+	node->next = *cylinders;
+	*cylinders = node;
 	return (1);
 }
 

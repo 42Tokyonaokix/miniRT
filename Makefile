@@ -55,7 +55,6 @@ MAND_SRCS = srcs/main.c \
 	srcs/parser/parse6_field.c \
 	srcs/parser/parse7_field2.c \
 	srcs/parser/utils1_line.c \
-	srcs/parser/utils2_list.c \
 	srcs/interact/key_bindings.c \
 	srcs/interact/intents.c \
 	srcs/interact/mouse_bindings.c \
@@ -112,27 +111,4 @@ fclean: clean
 
 re: fclean al
 
-# --- parser-only test binary (no mlx, for valgrind / CI parser tests) ----------
-PARSER_TEST_SRCS = srcs/main.c \
-	srcs/math/vec3_ops.c \
-	srcs/math/vec3_len.c \
-	srcs/parser/parse1_scene.c \
-	srcs/parser/parse2_env.c \
-	srcs/parser/parse3_env_parsers.c \
-	srcs/parser/parse4_object.c \
-	srcs/parser/parse5_fill.c \
-	srcs/parser/parse6_field.c \
-	srcs/parser/parse7_field2.c \
-	srcs/parser/utils1_line.c \
-	srcs/parser/utils2_list.c
-
-PARSER_TEST_OBJS = $(PARSER_TEST_SRCS:.c=.o)
-PARSER_TEST_NAME = parser_test
-
-parser_test: $(LIBFT) $(PARSER_TEST_OBJS)
-	$(CC) -g $(PARSER_TEST_OBJS) -L$(LIBFTDIR) -lft -lm -o $(PARSER_TEST_NAME)
-
-parser_test_clean:
-	rm -f $(PARSER_TEST_OBJS) $(PARSER_TEST_NAME)
-
-.PHONY: all bonus clean fclean re parser_test parser_test_clean
+.PHONY: all bonus clean fclean re

@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft/includes/ft_printf.h"
-#include "../../libft/includes/libft.h"
-#include "../includes/parser.h"
+#include "ft_printf.h"
+#include "libft.h"
+#include "parser.h"
+#include "memory.h"
 #include <fcntl.h>
 #include <stdbool.h>
 #include <unistd.h>
@@ -28,13 +29,6 @@ static bool	is_valid_file_suffix(const char *file_name)
 	if (ft_strcmp(file_name, ".rt"))
 		return (false);
 	return (true);
-}
-
-static void	cleanup_scene(t_scene *scene)
-{
-	list_clear((void **)&scene->spheres);
-	list_clear((void **)&scene->planes);
-	list_clear((void **)&scene->cylinders);
 }
 
 int	main(int argc, char **argv)
@@ -53,7 +47,7 @@ int	main(int argc, char **argv)
 		return ((void)ft_dprintf(2, "%s", "Cannot open file\n"), 1);
 	ok = parse_scene(fd, &app.scene);
 	close(fd);
-	cleanup_scene(&app.scene);
+	scene_free(&app.scene);
 	if (!ok)
 		return (1);
 	return (0);

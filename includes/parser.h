@@ -20,12 +20,12 @@
 # include "scene.h"
 # include "vector.h"
 
-typedef enum
+typedef enum e_token_flags
 {
 	FLAG_A = 1 << 0,
 	FLAG_C = 1 << 1,
 	FLAG_L = 1 << 2
-}		token_Flags;
+}	t_token_flags;
 
 int		parse_scene(int fd, t_scene *scene);
 
@@ -55,8 +55,5 @@ int		parse_direction(char *str, t_vec3 *vec);
 char	*skip_space_tabs(char *str);
 void	free_tokens(char **tokens);
 int		count_tokens(char **tokens);
-
-void	list_append(void **head, void *node);
-void	list_clear(void **head);
 
 #endif

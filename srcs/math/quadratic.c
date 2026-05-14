@@ -10,22 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/math_utils.h"
+#include "math_utils.h"
 
 double	quad_discriminant(double a, double b, double c)
 {
 	return (b * b - 4 * a * c);
 }
 
-/* 
-this func return min solution of quadratic. 
-if solution cant found or smaller than zero, 
-basically return ERRORNO (-1),
-but if a == 0 or discriminant == 0
-it may return minus value other than ERRORNO.
+/*
+** Returns the smallest non-negative root of a*x^2 + b*x + c = 0,
+** or ERRORNO (-1) when no real root exists or every root is negative.
+** Edge cases: the linear branch (a == 0) and the double-root branch
+** (discriminant ~ 0) may return a negative value other than ERRORNO,
+** so callers must treat any negative result as a miss.
 */
 
-double	quad_min_solutoin(double a, double b, double c)
+double	quad_min_solution(double a, double b, double c)
 {
 	double d;
 	double n1;
@@ -71,8 +71,8 @@ int main(int argc, char **argv)
 	a = ft_atoi(argv[1]);
 	b = ft_atoi(argv[2]);
 	c = ft_atoi(argv[3]);
-	s = quadratic_min_solutoin(a, b, c);
-	printf("quadratic_min_solutoin: %f\n", s);
+	s = quad_min_solution(a, b, c);
+	printf("quad_min_solution: %f\n", s);
 	return (EXIT_SUCCESS);
 }
  */

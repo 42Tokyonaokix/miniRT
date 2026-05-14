@@ -30,6 +30,6 @@ double	min_double(double d1, double d2);
 /* ========== Quadratic Equation Solver ========== */
 
 int		solve_quadratic(double a, double b, double c, double *t0, double *t1);
-double	quad_min_solutoin(double a, double b, double c);
+double	quad_min_solution(double a, double b, double c);
 
 #endif

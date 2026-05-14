@@ -6,33 +6,52 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/14 09:22:08 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/14 09:33:45 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/intersect.h"
+#include "intersect.h"
 
 static double	ray_cylinder_side_t(t_ray ray, t_cylinder cyl);
-static double	ray_cyliner_top_t(t_ray ray, t_cylinder cyl);
+static double	ray_cylinder_caps_t(t_ray ray, t_cylinder cyl);
+static double	pick_closer_t(double side_t, double top_t, t_point_type *type);
 
-double	ray_cylinder_t(t_ray ray, t_cylinder cyl)
+double	ray_cylinder_t(t_ray ray, t_cylinder cyl, t_point_type *type)
 {
-	t_vec3	side_p;
-	t_vec3	top_p;
 	double	side_t;
 	double	top_t;
-	t_hit	hit;
+	t_vec3	p;
 
-	ft_bzero(&hit, sizeof(t_hit));
 	side_t = ray_cylinder_side_t(ray, cyl);
-	side_p = ray_to_vec3(ray, side_t);
-	top_t = ray_cyliner_top_t(ray, cyl);
-	top_p = ray_to_vec3(ray, ray_cyliner_top_t(ray, cyl));
-	if (if_valid_side_point(side_p, cyl) == false)
-		side_t = ERRORNO;
-	if (if_valid_top_point(top_p, cyl) == false)
-		top_t = ERRORNO;
-	return (min_double(side_t, top_t));
+	if (side_t >= 0)
+	{
+		p = ray_to_vec3(ray, side_t);
+		if (if_valid_side_point(p, cyl) == false)
+			side_t = ERRORNO;
+	}
+	top_t = ray_cylinder_caps_t(ray, cyl);
+	if (top_t >= 0)
+	{
+		p = ray_to_vec3(ray, top_t);
+		if (if_valid_top_point(p, cyl) == false)
+			top_t = ERRORNO;
+	}
+	return (pick_closer_t(side_t, top_t, type));
+}
+
+static double	pick_closer_t(double side_t, double top_t, t_point_type *type)
+{
+	if (side_t < 0 && top_t < 0)
+		return (ERRORNO);
+	if (top_t < 0 || (side_t >= 0 && side_t <= top_t))
+	{
+		if (type)
+			*type = SIDE;
+		return (side_t);
+	}
+	if (type)
+		*type = TOP;
+	return (top_t);
 }
 
 bool	if_valid_side_point(t_vec3 point, t_cylinder cyl)
@@ -41,7 +60,7 @@ bool	if_valid_side_point(t_vec3 point, t_cylinder cyl)
 	t_vec3	c_hor;
 	t_vec3	cord_p;
 	double	half_h;
-	
+
 	half_h = cyl.height / 2;
 	p_hor = vec3_hor(point, cyl.axis);
 	c_hor = vec3_hor(cyl.center, cyl.axis);
@@ -51,7 +70,7 @@ bool	if_valid_side_point(t_vec3 point, t_cylinder cyl)
 	return (false);
 }
 
-bool		if_valid_top_point(t_vec3 point, t_cylinder cyl)
+bool	if_valid_top_point(t_vec3 point, t_cylinder cyl)
 {
 	t_vec3	p_ver;
 	t_vec3	c_ver;
@@ -67,8 +86,13 @@ bool		if_valid_top_point(t_vec3 point, t_cylinder cyl)
 	return (false);
 }
 
+/*
+** Returns only the nearer root of the side quadratic. When that root lies
+** outside the cylinder's height range, ray_cylinder_caps_t catches the
+** ray on the cap it must have crossed first, so the visible surface stays
+** correct without testing the farther root explicitly.
+*/
 static double	ray_cylinder_side_t(t_ray ray, t_cylinder cyl)
-
 {
 	t_vec3	offset;
 	t_ray	ray_ver;
@@ -76,17 +100,16 @@ static double	ray_cylinder_side_t(t_ray ray, t_cylinder cyl)
 	double	quad_b;
 	double	quad_c;
 
-	offset = vec3_sub(ray.origin, cyl.center);	
+	offset = vec3_sub(ray.origin, cyl.center);
 	ray_ver.origin = vec3_ver(offset, cyl.axis);
 	ray_ver.dir = vec3_ver(ray.dir, cyl.axis);
 	quad_a = vec3_sq(ray_ver.dir);
 	quad_b = 2 * vec3_dot(ray_ver.origin, ray_ver.dir);
 	quad_c = vec3_sq(ray_ver.origin) - cyl.radius * cyl.radius;
-	
-	return (quad_min_solutoin(quad_a, quad_b, quad_c));
+	return (quad_min_solution(quad_a, quad_b, quad_c));
 }
 
-static double	ray_cyliner_top_t(t_ray ray, t_cylinder cyl)
+static double	ray_cylinder_caps_t(t_ray ray, t_cylinder cyl)
 {
 	t_plane	p1;
 	t_plane	p2;
@@ -98,18 +121,10 @@ static double	ray_cyliner_top_t(t_ray ray, t_cylinder cyl)
 	ft_bzero(&p2, sizeof(t_plane));
 	p1.normal = cyl.axis;
 	p2.normal = cyl.axis;
-	v_top =  vec3_scale(cyl.axis, cyl.height / 2);
-	p1.point = vec3_add(cyl.center,v_top);
+	v_top = vec3_scale(cyl.axis, cyl.height / 2);
+	p1.point = vec3_add(cyl.center, v_top);
 	p2.point = vec3_sub(cyl.center, v_top);
 	t1 = ray_plane_t(ray, p1);
 	t2 = ray_plane_t(ray, p2);
-	if (t1 < 0 && t2 < 0)
-		return (ERRORNO);
-	else if (t1 < 0)
-		return (t2);
-	else if (t2 < 0)
-		return (t1);
-	else if (t1 < t2)
-		return (t1);
-	return (t2);
+	return (min_double(t1, t2));
 }

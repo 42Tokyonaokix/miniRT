@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/intersect.h"
+#include "intersect.h"
 
 t_hit	ray_plane_hit(t_ray ray, t_plane *plane)
 {

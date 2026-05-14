@@ -6,28 +6,29 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/14 08:55:49 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/14 09:24:32 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/intersect.h"
+#include "intersect.h"
 
 static t_vec3	cylinder_side_normal(t_vec3 point, t_cylinder cyl);
+static t_vec3	cylinder_cap_normal(t_vec3 point, t_cylinder cyl);
 
 t_hit	ray_cylinder_hit(t_ray ray, t_cylinder *cyl)
 {
-	double		t;
-	bool		point_is_top;
-	t_hit		hit;
+	double			t;
+	t_point_type	type;
+	t_hit			hit;
 
 	ft_bzero(&hit, sizeof(t_hit));
-	t = ray_cylinder_t(ray, *cyl);
+	type = SIDE;
+	t = ray_cylinder_t(ray, *cyl, &type);
 	if (t < 0)
 		return (hit);
 	hit.point = ray_to_vec3(ray, t);
-	point_is_top = if_valid_top_point(hit.point, *cyl);
-	if (point_is_top == true)
-		hit.normal = cyl->axis;
+	if (type == TOP)
+		hit.normal = cylinder_cap_normal(hit.point, *cyl);
 	else
 		hit.normal = cylinder_side_normal(hit.point, *cyl);
 	hit.obj_type = OBJ_CYLINDER;
@@ -38,24 +39,38 @@ t_hit	ray_cylinder_hit(t_ray ray, t_cylinder *cyl)
 static t_vec3	cylinder_side_normal(t_vec3 point, t_cylinder cyl)
 {
 	t_vec3	cord_p;
+	t_vec3	normal;
 
 	cord_p = vec3_sub(point, cyl.center);
-	return (vec3_ver(cord_p, cyl.axis));
+	normal = vec3_ver(cord_p, cyl.axis);
+	return (vec3_normalize(normal));
 }
 
+static t_vec3	cylinder_cap_normal(t_vec3 point, t_cylinder cyl)
+{
+	t_vec3	axis_n;
+	t_vec3	to_p;
 
+	axis_n = vec3_normalize(cyl.axis);
+	to_p = vec3_sub(point, cyl.center);
+	if (vec3_dot(to_p, cyl.axis) < 0)
+		return (vec3_scale(axis_n, -1));
+	return (axis_n);
+}
 
+/*
 int	main(int argc, char **argv)
 {
 	t_ray		ray;
 	t_cylinder	cylinder;
 	t_hit		hit;
+	t_point_type	type;
 	double		t;
 
 	if (argc != 15)
 		return (ft_dprintf(2, "ERROR!\n"), EXIT_FAILURE);
 	ft_bzero(&ray, sizeof(t_ray));
-	ft_bzero(&cylinder, sizeof(t_plane));
+	ft_bzero(&cylinder, sizeof(t_cylinder));
 	ray.origin.x = ft_atoi(argv[1]);
 	ray.origin.y = ft_atoi(argv[2]);
 	ray.origin.z = ft_atoi(argv[3]);
@@ -73,12 +88,12 @@ int	main(int argc, char **argv)
 	cylinder.axis.y = ft_atoi(argv[11]);
 	cylinder.axis.z = ft_atoi(argv[12]);
 	vec3_print(cylinder.axis, "cylinder.axis");
-	cylinder.radius = ft_atoi(argv[13]);	
+	cylinder.radius = ft_atoi(argv[13]);
 	cylinder.height = ft_atoi(argv[14]);
-	t = ray_cylinder_t(ray, cylinder);
+	type = SIDE;
+	t = ray_cylinder_t(ray, cylinder, &type);
 	double_print(t, "t");
 	hit = ray_cylinder_hit(ray, &cylinder);
 	hit_print(hit, "hit");
-} 
-
-
+}
+*/

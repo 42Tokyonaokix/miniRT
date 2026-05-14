@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/vector.h"
+#include "vector.h"
 
 double	vec3_dot(t_vec3 v1, t_vec3 v2)
 {

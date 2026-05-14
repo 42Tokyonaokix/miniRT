@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/vector.h"
+#include "vector.h"
 
 t_vec3	vec3_hor(t_vec3 v, t_vec3 axis)
 {

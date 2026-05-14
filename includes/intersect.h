@@ -74,16 +74,24 @@ typedef struct s_hit
 	void        *obj_ptr;
 }   t_hit;
 
-/* ========== Intersection Functions ========== */
-double	ray_plane_t(t_ray ray, t_plane plane);
-double	ray_cylinder_t(t_ray ray, t_cylinder cyl);
-t_hit	ray_plane_hit(t_ray ray, t_plane *plane);
-bool	if_valid_side_point(t_vec3 point, t_cylinder cyl);
-bool		if_valid_top_point(t_vec3 point, t_cylinder cyl);
+/* ========== Ray–Sphere ========== */
+double	ray_sphere_t(t_ray ray, t_sphere sphere);
+t_hit	ray_sphere_hit(t_ray ray, t_sphere *sphere);
 
-/* ========== Find Closest Hit ========== */
+/* ========== Ray–Plane ========== */
+double	ray_plane_t(t_ray ray, t_plane plane);
+t_hit	ray_plane_hit(t_ray ray, t_plane *plane);
+
+/* ========== Ray–Cylinder ========== */
+double	ray_cylinder_t(t_ray ray, t_cylinder cyl, t_point_type *type);
+t_hit	ray_cylinder_hit(t_ray ray, t_cylinder *cyl);
+bool	if_valid_side_point(t_vec3 point, t_cylinder cyl);
+bool	if_valid_top_point(t_vec3 point, t_cylinder cyl);
+
+/* ========== Ray Helpers ========== */
 t_vec3	ray_to_vec3(t_ray ray, double t);
+
+/* ========== Debug Print ========== */
 void	hit_print(t_hit hit, char *s);
-/* ========== Print Hit ========== */
 
 #endif

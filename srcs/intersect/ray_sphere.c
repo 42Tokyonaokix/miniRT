@@ -10,9 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/intersect.h"
+#include "intersect.h"
 
-static double	ray_sphere_t(t_ray ray, t_sphere sphere);
 static t_vec3	ray_sphere_normal(t_sphere sphere, t_vec3 point);
 
 t_hit	ray_sphere_hit(t_ray ray, t_sphere *sphere)
@@ -31,7 +30,7 @@ t_hit	ray_sphere_hit(t_ray ray, t_sphere *sphere)
 	return (hit);
 }
 
-static double	ray_sphere_t(t_ray ray, t_sphere sphere)
+double	ray_sphere_t(t_ray ray, t_sphere sphere)
 {
 	t_vec3	const_v;
 	double	quad_a;
@@ -43,7 +42,7 @@ static double	ray_sphere_t(t_ray ray, t_sphere sphere)
 	quad_a = vec3_sq(ray.dir);
 	quad_b = 2 * vec3_dot(const_v, ray.dir);
 	quad_c = vec3_sq(const_v) - sphere.radius * sphere.radius;	
-	t = quad_min_solutoin(quad_a, quad_b, quad_c);
+	t = quad_min_solution(quad_a, quad_b, quad_c);
 	if (t < 0)
 		return (ERRORNO);
 	return (t);
@@ -69,7 +68,7 @@ int	main(int argc, char **argv)
 	if (argc != 11)
 		return (ft_dprintf(2, "ERROR!\n"), EXIT_FAILURE);
 	ft_bzero(&ray, sizeof(t_ray));
-	ft_bzero(&sphere, sizeof(t_plane));
+	ft_bzero(&sphere, sizeof(t_sphere));
 	ray.origin.x = ft_atoi(argv[1]);
 	ray.origin.y = ft_atoi(argv[2]);
 	ray.origin.z = ft_atoi(argv[3]);

@@ -42,7 +42,7 @@ double	ray_sphere_t(t_ray ray, t_sphere sphere)
 	const_v = vec3_sub(ray.origin, sphere.center);
 	quad_a = vec3_sq(ray.dir);
 	quad_b = 2 * vec3_dot(const_v, ray.dir);
-	quad_c = vec3_sq(const_v) - sphere.radius * sphere.radius;	
+	quad_c = vec3_sq(const_v) - sphere.radius * sphere.radius;
 	t = quad_min_solution(quad_a, quad_b, quad_c);
 	if (t < 0)
 		return (ERRORNO);

@@ -1,6 +1,12 @@
 *.pdf
 */*/*.o
 minilibx-linux
-tests
 minilibx*
 miniRT
+.clangd
+.dockerignore
+.vscode/*
+Dockerfile
+*.o
+
+

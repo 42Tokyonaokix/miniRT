@@ -6,13 +6,16 @@
 /*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 16:30:00 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/05/14 17:24:26 by kesaitou         ###   ########.fr       */
+/*   Updated: 2026/05/15 03:48:09 by kesaitou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft/includes/ft_printf.h"
 #include "../../libft/includes/libft.h"
+#include "../includes/parser.h"
+#include <fcntl.h>
 #include <stdbool.h>
+#include <unistd.h>
 
 static bool	is_valid_file_suffix(const char *file_name)
 {
@@ -27,14 +30,31 @@ static bool	is_valid_file_suffix(const char *file_name)
 	return (true);
 }
 
+static void	cleanup_scene(t_scene *scene)
+{
+	list_clear((void **)&scene->spheres);
+	list_clear((void **)&scene->planes);
+	list_clear((void **)&scene->cylinders);
+}
+
 int	main(int argc, char **argv)
 {
-	if (argc != 2 || !is_valid_file_suffix((const)argv[1]))
-	{
-		ft_dprintf(2, "%s", "Error\n");
+	t_app	app;
+	int		fd;
+	int		ok;
+
+	if (argc != 2)
+		return ((void)ft_dprintf(2, "%s", "Args Error\n"), 1);
+	if (!is_valid_file_suffix((const char *)argv[1]))
+		return ((void)ft_dprintf(2, "%s", "file prefix Error\n"), 1);
+	ft_bzero(&app, sizeof(t_app));
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+		return ((void)ft_dprintf(2, "%s", "Cannot open file\n"), 1);
+	ok = parse_scene(fd, &app.scene);
+	close(fd);
+	cleanup_scene(&app.scene);
+	if (!ok)
 		return (1);
-	}
-	//parser()
 	return (0);
 }
- 

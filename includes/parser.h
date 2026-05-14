@@ -6,36 +6,57 @@
 /*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/14 16:10:12 by kesaitou         ###   ########.fr       */
+/*   Updated: 2026/05/15 02:38:17 by kesaitou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
 
-# include "libft.h"
+# include "app.h"
 # include "ft_printf.h"
 # include "get_next_line.h"
+# include "libft.h"
 # include "scene.h"
-# include "app.h"
+# include "vector.h"
 
-/* ========== Parser Functions ========== */
+typedef enum
+{
+	FLAG_A = 1 << 0,
+	FLAG_C = 1 << 1,
+	FLAG_L = 1 << 2
+}		token_Flags;
 
-int		parse_scene(const char *filename, t_scene *scene, t_app *app);
-int		parse_ambient(char *line, t_ambient *ambient);
-int		parse_camera(char *line, t_camera *camera);
-int		parse_light(char *line, t_light *light);
-int		parse_sphere(char *line, t_sphere **spheres, t_app *app);
-int		parse_plane(char *line, t_plane **planes, t_app *app);
-int		parse_cylinder(char *line, t_cylinder **cylinders, t_app *app);
+int		parse_scene(int fd, t_scene *scene);
 
-/* ========== Parser Utilities ========== */
+int		parse_ambient(char **tok, t_ambient *ambient);
+int		parse_camera(char **tok, t_camera *camera);
+int		parse_light(char **tok, t_light *light);
+int		parse_sphere(char **tok, t_sphere **spheres);
+int		parse_plane(char **tok, t_plane **planes);
+int		parse_cylinder(char **tok, t_cylinder **cylinders);
 
-char	**parse_split(char *line);
+int		dispatch_env(t_scene *scene, char **tok, unsigned char *flags);
+int		dispatch_object(t_scene *scene, char **tok);
+
+int		fill_sphere(char **tok, t_sphere *node);
+int		fill_plane(char **tok, t_plane *node);
+int		fill_cylinder(char **tok, t_cylinder *node);
+
 double	parse_atof(char *str, int *error);
 int		parse_vec3(char *str, t_vec3 *vec);
 int		parse_color(char *str, t_color *color);
 int		is_valid_float(char *str);
 
-#endif
+int		parse_ranged_double(char *str, double min, double max, double *out);
+int		parse_positive_double(char *str, double *out);
+int		parse_direction(char *str, t_vec3 *vec);
 
+char	*skip_space_tabs(char *str);
+void	free_tokens(char **tokens);
+int		count_tokens(char **tokens);
+
+void	list_append(void **head, void *node);
+void	list_clear(void **head);
+
+#endif

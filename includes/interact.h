@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   interact.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/13 15:16:50 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/15 03:14:29 by kesaitou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INTERACT_H
 # define INTERACT_H
 
-# include "libft.h"
 # include "ft_printf.h"
 # include "get_next_line.h"
+# include "libft.h"
 
 /* Forward declarations */
 typedef struct s_input_state	t_input_state;
@@ -32,24 +32,14 @@ typedef struct s_selection		t_selection;
 
 /* ========== Intent Functions ========== */
 
-
-
 /* ========== Selection Functions ========== */
-
-
 
 /* ========== Transform Apply Functions ========== */
 
 /* ========== Key Bindings ========== */
 
-
-
 /* ========== Mouse Bindings ========== */
 
-
-
 /* ========== HUD (optional) ========== */
-
-
 
 #endif

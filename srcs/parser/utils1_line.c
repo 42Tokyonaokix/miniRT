@@ -1,32 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memory.h                                           :+:      :+:    :+:   */
+/*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/15 03:14:08 by kesaitou         ###   ########.fr       */
+/*   Updated: 2026/05/15 00:30:00 by kesaitou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MEMORY_H
-# define MEMORY_H
+#include "../../includes/parser.h"
 
-# include "ft_printf.h"
-# include "get_next_line.h"
-# include "libft.h"
+/* 行・トークンレベルの汎用 helper */
 
-/* Forward declarations for domain/app types */
-typedef struct s_sphere		t_sphere;
-typedef struct s_plane		t_plane;
-typedef struct s_cylinder	t_cylinder;
-typedef struct s_scene		t_scene;
-typedef struct s_app		t_app;
+char	*skip_space_tabs(char *str)
+{
+	while (*str == ' ' || *str == '\t')
+		str++;
+	return (str);
+}
 
-/* ========== Scene & App Cleanup ========== */
+void	free_tokens(char **tokens)
+{
+	int	i;
 
-void						scene_free(t_scene *scene);
-void						app_cleanup(t_app *app);
+	if (!tokens)
+		return ;
+	i = 0;
+	while (tokens[i])
+	{
+		free(tokens[i]);
+		i++;
+	}
+	free(tokens);
+}
 
-#endif
+int	count_tokens(char **tokens)
+{
+	int	i;
+
+	if (!tokens)
+		return (0);
+	i = 0;
+	while (tokens[i])
+		i++;
+	return (i);
+}

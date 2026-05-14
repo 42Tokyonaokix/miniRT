@@ -6,7 +6,7 @@
 /*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 02:47:32 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/01/17 15:25:12 by kesaitou         ###   ########.fr       */
+/*   Updated: 2026/05/14 16:39:41 by kesaitou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ int					ft_putchar(char c, t_info *inf);
 int					ft_putstr(char *str, t_info *inf);
 int					is_flag(char c);
 int					ft_atoi_alpha(const char **nptr);
-int					ft_strcmp(const char *s1, const char *s2);
+int					pf_strcmp(const char *s1, const char *s2);
 
 #endif

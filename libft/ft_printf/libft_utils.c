@@ -6,7 +6,7 @@
 /*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 02:38:38 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/01/17 15:30:32 by kesaitou         ###   ########.fr       */
+/*   Updated: 2026/05/14 16:43:12 by kesaitou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_putstr(char *str, t_info *inf)
 	return (SUCCESS);
 }
 
-int	ft_strcmp(const char *s1, const char *s2)
+int	pf_strcmp(const char *s1, const char *s2)
 {
 	if (ft_strlen(s1) > ft_strlen(s2))
 		return (ft_strncmp(s1, s2, ft_strlen(s1)));

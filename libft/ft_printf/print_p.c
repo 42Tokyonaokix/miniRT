@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_p.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 02:37:52 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/01/25 06:35:22 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/14 16:41:12 by kesaitou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	print_p(va_list *args, t_info *inf, const char *base)
 	num_arr = ft_uptoa_base(va_arg(*args, void *), base);
 	if (!num_arr)
 		return (ERROR);
-	if (ft_strcmp(num_arr, "(nil)") == 0)
+	if (pf_strcmp(num_arr, "(nil)") == 0)
 		hash = 0;
-	if (inf->precision == 0 && ft_strcmp(num_arr, "0") == 0)
+	if (inf->precision == 0 && pf_strcmp(num_arr, "0") == 0)
 		num_arr[0] = '\0';
 	else if ((int)ft_strlen(num_arr) < inf->precision)
 		prec_zero = inf->precision - (int)ft_strlen(num_arr);

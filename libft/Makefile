@@ -6,7 +6,7 @@
 #    By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/18 16:54:22 by kesaitou          #+#    #+#              #
-#    Updated: 2026/05/14 15:54:06 by kesaitou         ###   ########.fr        #
+#    Updated: 2026/05/14 17:12:43 by kesaitou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ LIBC_SRCS := \
 	ft_isalnum.c ft_isprint.c ft_memcpy.c ft_strdup.c \
 	ft_strncmp.c ft_strnstr.c ft_lstnew.c ft_lstadd_front.c \
 	ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
-	ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_atof.c\
+	ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_atof.c ft_strcmp.c\
 
 PRINTF_SRCS := \
 	ft_dprintf.c \

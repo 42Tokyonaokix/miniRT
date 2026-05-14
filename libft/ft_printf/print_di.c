@@ -6,7 +6,7 @@
 /*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 02:38:51 by kesaitou          #+#    #+#             */
-/*   Updated: 2025/11/16 05:53:38 by kesaitou         ###   ########.fr       */
+/*   Updated: 2026/05/14 16:41:12 by kesaitou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	print_di(t_info *inf, va_list *args)
 	num_arr = stoa_hub(args, "0123456789", &is_minus);
 	if (!num_arr)
 		return (ERROR);
-	if (!inf->precision && !ft_strcmp(num_arr, "0"))
+	if (!inf->precision && !pf_strcmp(num_arr, "0"))
 		num_arr[0] = '\0';
 	else
 	{

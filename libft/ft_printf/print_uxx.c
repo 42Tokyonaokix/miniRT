@@ -6,7 +6,7 @@
 /*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 02:38:54 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/01/17 15:20:11 by kesaitou         ###   ########.fr       */
+/*   Updated: 2026/05/14 16:40:22 by kesaitou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	print_u(t_info *inf, va_list *args)
 	num_arr = utoa_hub(args, "0123456789");
 	if (!num_arr)
 		return (ERROR);
-	if (inf->precision == 0 && ft_strcmp(num_arr, "0") == 0)
+	if (inf->precision == 0 && pf_strcmp(num_arr, "0") == 0)
 		num_arr[0] = '\0';
 	if ((int)ft_strlen(num_arr) < inf->precision)
 		prec_zero = inf->precision - ft_strlen(num_arr);
@@ -42,7 +42,7 @@ int	print_x(t_info *inf, va_list *args)
 	num_arr = utoa_hub(args, "0123456789abcdef");
 	if (!num_arr)
 		return (ERROR);
-	if (inf->precision == 0 && ft_strcmp(num_arr, "0") == 0)
+	if (inf->precision == 0 && pf_strcmp(num_arr, "0") == 0)
 		num_arr[0] = '\0';
 	else if ((int)ft_strlen(num_arr) < inf->precision)
 		prec_zero = inf->precision - (int)ft_strlen(num_arr);
@@ -64,7 +64,7 @@ int	print_lx(t_info *inf, va_list *args)
 	num_arr = utoa_hub(args, "0123456789ABCDEF");
 	if (!num_arr)
 		return (ERROR);
-	if (inf->precision == 0 && ft_strcmp(num_arr, "0") == 0)
+	if (inf->precision == 0 && pf_strcmp(num_arr, "0") == 0)
 		num_arr[0] = '\0';
 	else if ((int)ft_strlen(num_arr) < inf->precision)
 		prec_zero = inf->precision - (int)ft_strlen(num_arr);

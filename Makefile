@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/02 23:20:38 by kesaitou          #+#    #+#              #
-#    Updated: 2026/05/13 20:23:28 by natakaha         ###   ########.fr        #
+#    Updated: 2026/05/14 17:36:22 by kesaitou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,24 +72,24 @@ MAND_SRCS = srcs/main.c \
 
 MAND_OBJS = $(MAND_SRCS:.c=.o)
 
-HEADERS = \
-	includes/app.h \
-	includes/error.h \
-	includes/interact.h \
-	includes/color.h \
-	includes/error.h \
-	includes/interact.h \
-	includes/intersect.h \
-	includes/math_utils.h \
-	includes/memory.h \
-	includes/mlx.h \
-	includes/parser.h \
-	includes/render.h \
-	includes/scene.h \
-	includes/vector
+HEADERS = includes/app.h \
+          includes/color.h \
+          includes/error.h \
+          includes/interact.h \
+          includes/intersect.h \
+          includes/math_utils.h \
+          includes/memory.h \
+          includes/mlx.h \
+          includes/parser.h \
+          includes/render.h \
+          includes/scene.h \
+          includes/vector.h
 
+all: $(NAME)
 
-$(NAME) : $(MAND_OBJS) $(LIBFT) $(MLX)
+bonus: all
+
+$(NAME): $(MAND_OBJS) $(LIBFT) $(MLX)
 	$(CC) $(MAND_OBJS) $(LDFLAGS) $(LDLIBS) -o $(NAME)
 
 $(LIBFT):
@@ -98,22 +98,17 @@ $(LIBFT):
 $(MLX):
 	$(MAKE) -C $(MLXDIR)
 
-all: $(NAME)
-
-bonus: all
-
-%.o : %.c $(HEADERS)
+%.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
-
 
 clean:
 	rm -f $(MAND_OBJS)
 	$(MAKE) -C $(LIBFTDIR) clean
 
 fclean: clean
-	rm -f $(NAME) $(LIBFT)
+	rm -f $(NAME)
+	$(MAKE) -C $(LIBFTDIR) fclean
 
 re: fclean all
 
-
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re

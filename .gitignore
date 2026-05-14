@@ -2,3 +2,5 @@
 */*/*.o
 minilibx-linux
 tests
+minilibx*
+miniRT

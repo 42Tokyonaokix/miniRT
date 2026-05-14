@@ -6,7 +6,7 @@
 /*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 14:28:59 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/05/14 17:13:23 by kesaitou         ###   ########.fr       */
+/*   Updated: 2026/05/14 19:03:07 by kesaitou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,22 @@ double	ft_atof(const char *nptr)
 	const char	*ptr;
 	double		result;
 	double		scale;
+	int			sign;
 
+	sign = 1;
+	while (*nptr == ' ' || (*nptr >= '\t' && *nptr <= '\r'))
+		nptr++;
+	if (*nptr == '-')
+		sign = -1;
 	ptr = ft_strchr(nptr, '.');
 	result = (double)ft_atoi(nptr);
 	if (!ptr)
 		return (result);
-	nptr += (int)(ptr - nptr) + 1;
+	nptr = ptr + 1;
 	scale = 0.1;
-	while (*nptr)
+	while (*nptr >= '0' && *nptr <= '9')
 	{
-		result += (scale * (double)(*nptr - '0'));
+		result += (scale * sign * (double)(*nptr - '0'));
 		scale /= 10;
 		nptr++;
 	}

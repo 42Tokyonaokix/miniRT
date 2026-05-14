@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/14 08:48:13 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/14 12:09:32 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_hit	ray_plane_hit(t_ray ray, t_plane *plane)
 	ft_bzero(&hit, sizeof(t_hit));
 	if (t < 0)
 		return (hit);
+	hit.t = t;
 	hit.point = ray_to_vec3(ray, t);
 	hit.normal = plane->normal;
 	hit.obj_type = OBJ_PLANE;

@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/14 09:33:45 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/14 12:33:11 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 static double	ray_cylinder_side_t(t_ray ray, t_cylinder cyl);
 static double	ray_cylinder_caps_t(t_ray ray, t_cylinder cyl);
-static double	pick_closer_t(double side_t, double top_t, t_point_type *type);
 
 double	ray_cylinder_t(t_ray ray, t_cylinder cyl, t_point_type *type)
 {
 	double	side_t;
-	double	top_t;
+	double	caps_t;
+	double	min_t;
 	t_vec3	p;
 
 	side_t = ray_cylinder_side_t(ray, cyl);
@@ -29,29 +29,19 @@ double	ray_cylinder_t(t_ray ray, t_cylinder cyl, t_point_type *type)
 		if (if_valid_side_point(p, cyl) == false)
 			side_t = ERRORNO;
 	}
-	top_t = ray_cylinder_caps_t(ray, cyl);
-	if (top_t >= 0)
+	caps_t = ray_cylinder_caps_t(ray, cyl);
+	if (caps_t >= 0)
 	{
-		p = ray_to_vec3(ray, top_t);
-		if (if_valid_top_point(p, cyl) == false)
-			top_t = ERRORNO;
+		p = ray_to_vec3(ray, caps_t);
+		if (if_valid_caps_point(p, cyl) == false)
+			caps_t = ERRORNO;
 	}
-	return (pick_closer_t(side_t, top_t, type));
-}
-
-static double	pick_closer_t(double side_t, double top_t, t_point_type *type)
-{
-	if (side_t < 0 && top_t < 0)
-		return (ERRORNO);
-	if (top_t < 0 || (side_t >= 0 && side_t <= top_t))
-	{
-		if (type)
-			*type = SIDE;
-		return (side_t);
-	}
-	if (type)
-		*type = TOP;
-	return (top_t);
+	min_t = min_double(side_t, caps_t);
+	if (min_t == caps_t)
+		*type = CAPS;
+	if (min_t == side_t)
+		*type = SIDE;
+	return (min_t);
 }
 
 bool	if_valid_side_point(t_vec3 point, t_cylinder cyl)
@@ -70,7 +60,7 @@ bool	if_valid_side_point(t_vec3 point, t_cylinder cyl)
 	return (false);
 }
 
-bool	if_valid_top_point(t_vec3 point, t_cylinder cyl)
+bool	if_valid_caps_point(t_vec3 point, t_cylinder cyl)
 {
 	t_vec3	p_ver;
 	t_vec3	c_ver;
@@ -113,7 +103,7 @@ static double	ray_cylinder_caps_t(t_ray ray, t_cylinder cyl)
 {
 	t_plane	p1;
 	t_plane	p2;
-	t_vec3	v_top;
+	t_vec3	v_caps;
 	double	t1;
 	double	t2;
 
@@ -121,9 +111,9 @@ static double	ray_cylinder_caps_t(t_ray ray, t_cylinder cyl)
 	ft_bzero(&p2, sizeof(t_plane));
 	p1.normal = cyl.axis;
 	p2.normal = cyl.axis;
-	v_top = vec3_scale(cyl.axis, cyl.height / 2);
-	p1.point = vec3_add(cyl.center, v_top);
-	p2.point = vec3_sub(cyl.center, v_top);
+	v_caps = vec3_scale(cyl.axis, cyl.height / 2);
+	p1.point = vec3_add(cyl.center, v_caps);
+	p2.point = vec3_sub(cyl.center, v_caps);
 	t1 = ray_plane_t(ray, p1);
 	t2 = ray_plane_t(ray, p2);
 	return (min_double(t1, t2));

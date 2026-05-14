@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 22:00:00 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/13 15:24:38 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/14 11:44:21 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ typedef struct s_light
     double  ratio;
     t_color color;
 }   t_light;
+
+typedef struct s_sphere     t_sphere;
+typedef struct s_plane      t_plane;
+typedef struct s_cylinder   t_cylinder;
 
 typedef struct s_scene
 {

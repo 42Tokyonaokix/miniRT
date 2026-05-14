@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/14 09:24:32 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/14 12:08:39 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ t_hit	ray_cylinder_hit(t_ray ray, t_cylinder *cyl)
 	t = ray_cylinder_t(ray, *cyl, &type);
 	if (t < 0)
 		return (hit);
+	hit.t = t;
 	hit.point = ray_to_vec3(ray, t);
-	if (type == TOP)
+	if (type == CAPS)
 		hit.normal = cylinder_cap_normal(hit.point, *cyl);
 	else
 		hit.normal = cylinder_side_normal(hit.point, *cyl);

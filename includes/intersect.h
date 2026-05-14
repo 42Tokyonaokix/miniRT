@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/14 08:30:39 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/14 12:08:01 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,13 @@ typedef struct s_cylinder
 typedef enum e_point_type
 {
 	SIDE,
-	TOP
+	CAPS,
 }	t_point_type;
 
 typedef enum e_obj_type
 {
-	OBJ_SPHERE,
+	OBJ_NONE,
+    OBJ_SPHERE,
 	OBJ_PLANE,
 	OBJ_CYLINDER
 }   t_obj_type;
@@ -67,10 +68,11 @@ typedef struct s_ray
 
 typedef struct s_hit
 {
-	t_vec3		point;
-	t_vec3       normal;
-	t_color      color;
-	t_obj_type   obj_type;
+	double      t;
+    t_vec3		point;
+	t_vec3      normal;
+	t_color     color;
+	t_obj_type  obj_type;
 	void        *obj_ptr;
 }   t_hit;
 
@@ -86,7 +88,7 @@ t_hit	ray_plane_hit(t_ray ray, t_plane *plane);
 double	ray_cylinder_t(t_ray ray, t_cylinder cyl, t_point_type *type);
 t_hit	ray_cylinder_hit(t_ray ray, t_cylinder *cyl);
 bool	if_valid_side_point(t_vec3 point, t_cylinder cyl);
-bool	if_valid_top_point(t_vec3 point, t_cylinder cyl);
+bool	if_valid_caps_point(t_vec3 point, t_cylinder cyl);
 
 /* ========== Ray Helpers ========== */
 t_vec3	ray_to_vec3(t_ray ray, double t);

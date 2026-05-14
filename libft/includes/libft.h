@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 02:07:53 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/01/25 06:36:41 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/14 15:53:41 by kesaitou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int					ft_toupper(int c);
 int					ft_isnumber(char *str);
 
 int					ft_atoi(const char *nptr);
+double				ft_atof(const char *nptr);
+
 void				*ft_calloc(size_t nmemb, size_t size);
 char				*ft_strdup(const char *s);
 

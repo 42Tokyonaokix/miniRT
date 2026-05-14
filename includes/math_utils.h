@@ -25,7 +25,7 @@
 # define EPS 1e-6
 # define ERRORNO -1
 /* ========== Numeric Helpers ========== */
-
+double	min_double(double d1, double d2);
 
 /* ========== Quadratic Equation Solver ========== */
 

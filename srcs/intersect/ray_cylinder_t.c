@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/13 23:49:57 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/14 09:22:08 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static double	ray_cylinder_side_t(t_ray ray, t_cylinder cyl);
 static double	ray_cyliner_top_t(t_ray ray, t_cylinder cyl);
 
-t_hit	ray_cylinder_hit(t_ray ray, t_cylinder cyl)
+double	ray_cylinder_t(t_ray ray, t_cylinder cyl)
 {
 	t_vec3	side_p;
 	t_vec3	top_p;
@@ -32,37 +32,37 @@ t_hit	ray_cylinder_hit(t_ray ray, t_cylinder cyl)
 		side_t = ERRORNO;
 	if (if_valid_top_point(top_p, cyl) == false)
 		top_t = ERRORNO;
-	return (top_t);
+	return (min_double(side_t, top_t));
 }
 
-static	bool	if_valid_side_point(t_vec3 point, t_cylinder cyl)
+bool	if_valid_side_point(t_vec3 point, t_cylinder cyl)
 {
 	t_vec3	p_hor;
 	t_vec3	c_hor;
-	t_vec3	cordinated_p;
+	t_vec3	cord_p;
 	double	half_h;
 	
 	half_h = cyl.height / 2;
 	p_hor = vec3_hor(point, cyl.axis);
 	c_hor = vec3_hor(cyl.center, cyl.axis);
-	cordinated_p = vec3_sub(p_hor, c_hor);
-	if (vec3_sq(cordinated_p) < half_h * half_h)
+	cord_p = vec3_sub(p_hor, c_hor);
+	if (vec3_sq(cord_p) < half_h * half_h)
 		return (true);
 	return (false);
 }
 
-static bool		if_valid_top_point(t_vec3 point, t_cylinder cyl)
+bool		if_valid_top_point(t_vec3 point, t_cylinder cyl)
 {
 	t_vec3	p_ver;
 	t_vec3	c_ver;
-	t_vec3	cordinated_p;
+	t_vec3	cord_p;
 	double	rad;
 
 	rad = cyl.radius;
 	p_ver = vec3_ver(point, cyl.axis);
 	c_ver = vec3_ver(cyl.center, cyl.axis);
-	cordinated_p = vec3_sub(p_ver, c_ver);
-	if (vec3_sq(cordinated_p) < rad * rad)
+	cord_p = vec3_sub(p_ver, c_ver);
+	if (vec3_sq(cord_p) < rad * rad)
 		return (true);
 	return (false);
 }
@@ -70,19 +70,20 @@ static bool		if_valid_top_point(t_vec3 point, t_cylinder cyl)
 static double	ray_cylinder_side_t(t_ray ray, t_cylinder cyl)
 
 {
+	t_vec3	offset;
 	t_ray	ray_ver;
 	double	quad_a;
 	double	quad_b;
 	double	quad_c;
-	double	t;
 
-	ray_ver.origin = vec3_ver(ray.origin, cyl.axis);
+	offset = vec3_sub(ray.origin, cyl.center);	
+	ray_ver.origin = vec3_ver(offset, cyl.axis);
 	ray_ver.dir = vec3_ver(ray.dir, cyl.axis);
 	quad_a = vec3_sq(ray_ver.dir);
 	quad_b = 2 * vec3_dot(ray_ver.origin, ray_ver.dir);
 	quad_c = vec3_sq(ray_ver.origin) - cyl.radius * cyl.radius;
-	t = quad_min_solutoin(quad_a, quad_b, quad_c);
-	return (t);
+	
+	return (quad_min_solutoin(quad_a, quad_b, quad_c));
 }
 
 static double	ray_cyliner_top_t(t_ray ray, t_cylinder cyl)

@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/13 19:18:54 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/14 09:09:34 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,14 @@
 t_vec3	vec3_hor(t_vec3 v, t_vec3 axis)
 {
 	t_vec3	v_hor;
+	double	den;
+	double	scale;
 	
-	v_hor = vec3_scale(axis, 1 / vec3_dot(axis, v));
+	den = vec3_sq(axis);
+	if (den < EPS * EPS)
+		return ((t_vec3){0.0, 0.0, 0.0});
+	scale = vec3_dot(v, axis) / den;
+	v_hor = vec3_scale(axis, scale);
 	return (v_hor);
 }
 

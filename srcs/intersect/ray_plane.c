@@ -6,13 +6,11 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/13 19:25:44 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/14 08:48:13 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/intersect.h"
-
-static double	ray_plane_t(t_ray ray, t_plane plane);
 
 t_hit	ray_plane_hit(t_ray ray, t_plane *plane)
 {

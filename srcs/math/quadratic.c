@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 10:33:15 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/13 23:50:33 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/14 09:01:06 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ double	quad_min_solutoin(double a, double b, double c)
 	double n1;
 	double n2;
 	
+	if (a == 0 && b == 0)
+		return (ERRORNO);
 	if (a == 0)
 		return (-c / b);
 	d = quad_discriminant(a, b, c);
@@ -40,20 +42,20 @@ double	quad_min_solutoin(double a, double b, double c)
 		return (-b / (2 * a));
 	n1 = (-b - sqrt(d)) / (2 * a);
 	n2 = (-b + sqrt(d)) / (2 * a);
-	if (n1 < 0 && n2 < 0)
-		return (ERRORNO);
-	else if (n1 < 0)
-		return (n2);
-	else if (n2 < 0)
-		return (n1);
-	else if (n1 < n2)
-		return (n1);
-	return (n2);
+	return (min_double(n1, n2));
 }
 
 double	min_double(double d1, double d2)
 {
-	
+	if (d1 < 0 && d2 < 0)
+		return (ERRORNO);
+	else if (d1 < 0)
+		return (d2);
+	else if (d2 < 0)
+		return (d1);
+	else if (d1 < d2)
+		return (d1);
+	return (d2);
 }
 
 /* 

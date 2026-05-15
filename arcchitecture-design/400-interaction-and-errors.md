@@ -14,7 +14,7 @@ status: draft
 | --------------------------------------------- | ------------------------------ | -------- |
 | キーボード（TAB / WASD / QE / 矢印 / SPACE / R / ESC） | 選択切替・translate / rotate・再描画・終了 | ADR-0004 |
 | マウス左クリック                                      | object を直接選択（クリック先の物体）         | ADR-0006 |
-| マウス左ドラッグ（CAMERA 選択中のみ）                        | yaw / pitch（FPS マウスルック）        | ADR-0006 |
+| マウス左ドラッグ（CAMERA 選択中のみ）                        | 水平/垂直回転（FPS マウスルック）        | ADR-0006 |
 
 操作の流れ:
 ```
@@ -181,7 +181,7 @@ int on_mouse_release(int button, int x, int y, t_app *a)
 # define CLICK_THRESHOLD    5     /* pixels */
 ```
 
-camera 回転時の pitch ±89° clamp は `intent_rotate` 内（SEL_CAMERA かつ pitch 軸の場合）か `apply_rotate_camera` 内で行う。実装方針は intent / apply のどちらに置くかを Phase G で決める（参考: intent に置くと「camera を回したいなら必ずクランプ」が 1 箇所、apply に置くと「camera を回すなら必ずクランプ」が複数 intent 経由でも一貫）。
+camera 回転時の上下方向の角度は ±89° で clamp する（特異点回避）。実装方針は `intent_rotate` 内（SEL_CAMERA かつ camera.right 軸の場合）か `apply_rotate_camera` 内で行う。意図は「camera を回すなら必ずクランプ」を 1 箇所にまとめること。
 
 感度・閾値の最終値は実機チューニング（`500-roadmap.md` §2.4-2.5）。
 

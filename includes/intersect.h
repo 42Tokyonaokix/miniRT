@@ -48,14 +48,16 @@ typedef struct s_cylinder
 
 typedef enum e_point_type
 {
-	SIDE,
-	CAPS,
-}						t_point_type;
+/* OBJ */
 
-typedef enum e_obj_type
 {
+<<<<<<< HEAD
 	OBJ_NONE,
 	OBJ_SPHERE,
+=======
+	OBJ_NONE = 0,
+    OBJ_SPHERE,
+>>>>>>> 1e8a627 (feat: camera camera_utils)
 	OBJ_PLANE,
 	OBJ_CYLINDER
 }						t_obj_type;

@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 22:00:00 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/14 11:44:21 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/14 21:57:12 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ typedef struct s_camera
     t_vec3  right;
     t_vec3  up;
     double  fov_deg;
-    double  yaw;
-    double  pitch;
 }   t_camera;
 
 typedef struct s_light

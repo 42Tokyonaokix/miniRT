@@ -8,5 +8,6 @@ miniRT
 .vscode/*
 Dockerfile
 *.o
-
+tests
+tests/*
 

@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 22:05:00 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/15 16:52:06 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/15 23:09:02 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "scene.h"
 # include "intersect.h"
 # include "render.h"
+# include "mlx_ctx.h"
 
 typedef enum e_select_kind
 {
@@ -68,5 +69,9 @@ typedef struct s_app
     t_render_ctx    render;
     t_input_state   input;
 }   t_app;
+
+
+
+int	app_init(t_app *app);
 
 #endif

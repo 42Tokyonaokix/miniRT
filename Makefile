@@ -6,7 +6,7 @@
 #    By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/02 23:20:38 by kesaitou          #+#    #+#              #
-#    Updated: 2026/05/15 16:53:27 by natakaha         ###   ########.fr        #
+#    Updated: 2026/05/15 23:21:39 by natakaha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,9 @@ MAND_SRCS = srcs/main.c \
 	srcs/memory/scene_lists.c \
 	srcs/memory/app_free.c \
 	srcs/memory/scene_free.c \
-	srcs/error/exit_error.c
+	srcs/error/exit_error.c \
+	srcs/error/error_message.c \
+	srcs/app/app_init.c \
 
 MAND_OBJS = $(MAND_SRCS:.c=.o)
 

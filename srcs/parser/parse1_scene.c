@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse1_scene.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/15 03:09:42 by kesaitou         ###   ########.fr       */
+/*   Updated: 2026/05/15 21:21:37 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,6 @@ static int	check_required(unsigned char flags)
 	return (1);
 }
 
-static void	cleanup_gnl(int fd)
-{
-	char	*line;
-
-	line = get_next_line(fd);
-	while (line != NULL)
-	{
-		free(line);
-		line = get_next_line(fd);
-	}
-}
-
 int	parse_scene(int fd, t_scene *scene)
 {
 	char			*line;
@@ -87,7 +75,7 @@ int	parse_scene(int fd, t_scene *scene)
 		if (!parse_line(line, scene, &flags))
 		{
 			free(line);
-			cleanup_gnl(fd);
+			get_next_line(GNL_CLOSE);
 			return (0);
 		}
 		free(line);

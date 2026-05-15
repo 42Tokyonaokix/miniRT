@@ -23,7 +23,10 @@ t_hit	ray_plane_hit(t_ray ray, t_plane *plane)
 		return (hit);
 	hit.t = t;
 	hit.point = ray_to_vec3(ray, t);
-	hit.normal = plane->normal;
+	if (vec3_dot(ray.dir, plane->normal) > 0)
+		hit.normal = vec3_scale(plane->normal, -1);
+	else
+		hit.normal = plane->normal;
 	hit.obj_type = OBJ_PLANE;
 	hit.obj_ptr = plane;
 	hit.obj_color = plane->color;

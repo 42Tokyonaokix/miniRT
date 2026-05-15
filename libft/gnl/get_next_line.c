@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 11:35:22 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/01/25 06:38:06 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/15 21:14:55 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,18 +96,21 @@ char	*my_get_line(char **va_buf)
 
 char	*get_next_line(int fd)
 {
-	static char	*va_buf[OPEN_MAX];
+	static char	*va_buf;
 	char		*res;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd >= OPEN_MAX)
-		return (NULL);
-	res = read_file(fd, va_buf[fd]);
-	if (!res)
 	{
-		free(va_buf[fd]);
-		va_buf[fd] = NULL;
+		free(va_buf);
 		return (NULL);
 	}
-	va_buf[fd] = res;
-	return (my_get_line(&va_buf[fd]));
+	res = read_file(fd, va_buf);
+	if (!res)
+	{
+		free(va_buf);
+		va_buf = NULL;
+		return (NULL);
+	}
+	va_buf = res;
+	return (my_get_line(&va_buf));
 }

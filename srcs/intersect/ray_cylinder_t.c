@@ -37,9 +37,11 @@ double	ray_cylinder_t(t_ray ray, t_cylinder cyl, t_point_type *type)
 			caps_t = ERRORNO;
 	}
 	min_t = min_double(side_t, caps_t);
-	if (min_t == caps_t)
+	if (min_t < 0)
+		return (min_t);
+	if (caps_t >= 0 && min_t == caps_t)
 		*type = CAPS;
-	if (min_t == side_t)
+	else
 		*type = SIDE;
 	return (min_t);
 }

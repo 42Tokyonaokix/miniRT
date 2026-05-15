@@ -6,16 +6,42 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/15 19:49:09 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/16 00:13:07 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 
 static t_color	render_exposed_color(t_hit hit, t_scene scene);
+static bool	render_exposed_light(t_hit hit, t_light light, t_scene scene);
 static t_color	render_shade_color(t_hit hit, t_scene scene);
+static t_color	render_obj_none(t_scene scene);
 
-bool	render_exposed_light(t_hit hit, t_light light, t_scene scene)
+int	render_detect_color(t_hit hit, t_scene scene)
+{
+	t_color	c_color;
+	int		c_int;
+	
+	if (hit.obj_type == OBJ_NONE)
+		c_color = render_obj_none(scene);
+	else if (render_exposed_light(hit, scene.light, scene) == false)
+		c_color = render_shade_color(hit, scene);
+	else
+		c_color = render_exposed_color(hit, scene);
+	c_int = color_int(c_color);
+	return (c_int);
+}
+
+static t_color	render_obj_none(t_scene scene)
+{
+	t_color	c;
+
+	ft_bzero(&c, sizeof(t_color));
+	return (c);	
+	(void)scene;
+}
+
+static bool	render_exposed_light(t_hit hit, t_light light, t_scene scene)
 {
 	t_ray	light_ray;
 	t_hit	c_hit;
@@ -30,14 +56,6 @@ bool	render_exposed_light(t_hit hit, t_light light, t_scene scene)
 	if (vec3_sq(v_tmp) < EPS * EPS)
 		return (true);
 	return (false);
-}
-
-t_color	render_detect_color(t_hit hit, t_scene scene)
-{
-	if (render_exposed_light(hit, scene.light, scene) == false)
-		return (render_shade_color(hit, scene));
-	else
-		return (render_exposed_color(hit, scene));
 }
 
 static t_color	render_shade_color(t_hit hit, t_scene scene)
@@ -57,7 +75,7 @@ static t_color	render_exposed_color(t_hit hit, t_scene scene)
 
 	light = scene.light;
 	c_amb = render_shade_color(hit, scene); 
-	l_scale = vec3_dot(vec3_sub(light.position, hit.point), hit.normal) * light.ratio;
+	l_scale = vec3_dot(vec3_normalize(vec3_sub(light.position, hit.point)), hit.normal) * light.ratio;
 	if (l_scale < 0)
 		l_scale = 0;
 	c_dif = color_scale(color_mul(hit.obj_color, light.color), l_scale);

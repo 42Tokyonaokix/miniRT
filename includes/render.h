@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/15 17:07:23 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/15 23:12:57 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 
 # define WIN_H 600
 # define WIN_W 800
+# define OK 0
+# define NG 1
 
 typedef struct s_scene
 {
@@ -38,17 +40,11 @@ double		camera_half_w(t_camera camera);
 double		camera_half_h(t_camera camera);
 
 /* ========== Camera Functions ========== */
-t_ray		generate_primary_ray(const t_camera *camera, int x, int y);
-t_camera	build_camera_basis(t_camera camera);
+int	        camera_build_basis(t_camera	*camera);
 
 /* ========== Shading Functions ========== */
-t_color		shade(const t_scene *scene, const t_hit *hit, t_ray ray);
-
-/* ========== Normal Functions ========== */
-
-t_vec3		normal_sphere(const t_sphere *sphere, t_vec3 point);
-t_vec3		normal_plane(const t_plane *plane);
-t_vec3		normal_cylinder(const t_cylinder *cylinder, t_vec3 point);
-t_vec3		face_forward(t_vec3 normal, t_ray ray);
+t_ray		generate_primary_ray(const t_camera *camera, int x, int y);
+t_ray   	camera_pixel_ray(t_camera camera, int x, int y);
+int	render_detect_color(t_hit hit, t_scene scene);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/15 16:37:58 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/15 23:15:04 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "scene.h"
 # include "vector.h"
 # include "render.h"
+# define GNL_CLOSE -1
 
 typedef enum e_token_flags
 {

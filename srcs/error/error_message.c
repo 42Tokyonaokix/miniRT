@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   error_message.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/15 22:12:42 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/15 23:21:56 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#include "mlx_ctx.h"
 
-# include "libft.h"
-# include "ft_printf.h"
-# include "get_next_line.h"
-# include <stdio.h>
-# include <stdlib.h>
-
-/* Forward declaration for app */
-typedef struct s_app		t_app;
-
-/* ========== Error Handling ========== */
-void	error_message(char *arg1, char *message);
-
-#endif
+void	error_message(char *arg1, char *message)
+{
+	ft_dprintf(STDERR_FILENO, "miniRT: %s: %s\n", arg1, message);
+}

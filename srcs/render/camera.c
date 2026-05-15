@@ -6,31 +6,27 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/15 14:21:01 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/16 00:06:45 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "render.h"
 
-t_camera	camera_build_basis(t_camera	camera)
+int	camera_build_basis(t_camera	*camera)
 {
 	t_vec3	world_up;
 	
 	ft_bzero(&world_up, sizeof(t_vec3));
 	world_up.z = 1;
-	camera.forward = vec3_normalize(camera.forward);
-	if (vec3_sq(vec3_sub(camera.forward, world_up)) < EPS * EPS)
+	camera->forward = vec3_normalize(camera->forward);
+	if (vec3_sq(vec3_sub(camera->forward, world_up)) < EPS * EPS)
 	{
 		world_up.z = 0;
 		world_up.y = 1;
 	}
-	camera.up = vec3_normalize(vec3_ver(world_up, camera.forward));
-	if (vec3_sq(camera.up) == 0)
-		return (ft_bzero(&camera, sizeof(t_camera)), camera);
-	camera.right = vec3_normalize(vec3_cross(camera.forward, camera.up));
-	if (vec3_sq(camera.right) == 0)
-		return (ft_bzero(&camera, sizeof(t_camera)), camera);
-	return (camera);
+	camera->up = vec3_normalize(vec3_ver(world_up, camera->forward));
+	camera->right = vec3_normalize(vec3_cross(camera->forward, camera->up));
+	return (OK);
 }
 
 t_ray	camera_pixel_ray(t_camera camera, int x, int y)

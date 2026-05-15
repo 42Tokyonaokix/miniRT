@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/02 23:20:38 by kesaitou          #+#    #+#              #
-#    Updated: 2026/05/14 17:36:22 by kesaitou         ###   ########.fr        #
+#    Updated: 2026/05/15 14:17:24 by natakaha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@ LDLIBS = -lft -lmlx $(MLX_LIBS)
 
 MAND_SRCS = srcs/main.c \
 	srcs/math/color.c \
-	srcs/math/color_ops.c \
 	srcs/math/quadratic.c \
 	srcs/math/rodrigues.c \
 	srcs/math/vec3_dot_cross.c \
@@ -45,8 +44,8 @@ MAND_SRCS = srcs/main.c \
 	srcs/intersect/ray_cylinder_t.c \
 	srcs/intersect/ray_plane.c \
 	srcs/render/camera.c \
+	srcs/render/camera_utils.c \
 	srcs/render/shade.c \
-	srcs/render/normal.c \
 	srcs/parser/parse_plane.c \
 	srcs/parser/parse_cylinder.c \
 	srcs/parser/parse_light.c \

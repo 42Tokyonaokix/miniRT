@@ -109,7 +109,7 @@ flowchart LR
 7. mlx_loop: イベント待ち
    - key 押下          → interact/ で selection or transform_apply → render() 再描画
    - マウス左 click     → interact/ で object 選択 → re-render
-   - マウス左 drag      → CAMERA 選択中なら yaw/pitch を蓄積、release で render
+   - マウス左 drag      → CAMERA 選択中なら水平/垂直回転、release で render
    - ESC / 閉じるボタン → cleanup → exit(0)
 ```
 
@@ -136,7 +136,7 @@ flowchart LR
 | SPACE | `intent_request_render` |
 | ESC / ✕ | `intent_quit` |
 | マウス左 click | `intent_select_object(obj_type, obj_ptr)`（ピクセル → primary ray → `find_closest_hit`） |
-| マウス左 drag (CAMERA 選択中) | `intent_rotate(yaw, dx*感度)` + `intent_rotate(pitch, dy*感度)`、release で `intent_request_render` |
+| マウス左 drag (CAMERA 選択中) | `intent_rotate(world_up, -dx*感度)` + `intent_rotate(camera.right, -dy*感度)`、release で `intent_request_render` |
 
 詳細は `400-interaction-and-errors.md`。
 

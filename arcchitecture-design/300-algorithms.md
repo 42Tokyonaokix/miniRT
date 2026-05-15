@@ -36,12 +36,12 @@ up      = cross(right, forward)
 ```
 
 > **【特異点】**
-> `forward` が `world_up = (0, 1, 0)` と平行になると `cross` がゼロベクトルになり `normalize` で破綻する。
-> `build_camera_basis` の冒頭で検出し、`world_up = (0, 0, 1)` に切り替える:
+> `forward` が `world_up = (0, 0, 1)`（Z-up）と平行になると `cross` がゼロベクトルになり `normalize` で破綻する。
+> `build_camera_basis` の冒頭で検出し、`world_up = (0, 1, 0)` に切り替える:
 >
 > ```c
 > if (fabs(dot(forward, world_up)) > 0.9999)
->     world_up = (t_vec3){0, 0, 1};
+>     world_up = (t_vec3){0, 1, 0};
 > ```
 
 ### 2.2 ピクセル → ray 方向

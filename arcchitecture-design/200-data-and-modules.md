@@ -118,8 +118,6 @@ typedef struct s_camera
     t_vec3  right;      /* 起動時に build_camera_basis で計算 */
     t_vec3  up;         /* 起動時に build_camera_basis で計算 */
     double  fov_deg;
-    double  yaw;        /* FPS-style 蓄積 (ADR-0004 追記、ADR-0006 で drag に必要) */
-    double  pitch;      /* FPS-style 蓄積、±89° で clamp */
 }   t_camera;
 
 typedef struct s_light

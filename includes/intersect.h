@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/14 12:08:01 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/14 15:51:05 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,11 @@ typedef enum e_point_type
 	CAPS,
 }	t_point_type;
 
+/* OBJ */
+
 typedef enum e_obj_type
 {
-	OBJ_NONE,
+	OBJ_NONE = 0,
     OBJ_SPHERE,
 	OBJ_PLANE,
 	OBJ_CYLINDER

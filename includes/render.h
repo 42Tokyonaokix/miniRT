@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/15 12:11:53 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/15 17:07:23 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,20 @@
 # include "get_next_line.h"
 # include "scene.h"
 # include "intersect.h"
+# include "color.h"
 
 # define WIN_H 600
 # define WIN_W 800
+
+typedef struct s_scene
+{
+    t_ambient   ambient;
+    t_camera    camera;
+    t_light     light;
+    t_sphere    *spheres;
+    t_plane     *planes;
+    t_cylinder  *cylinders;
+}           t_scene;
 
 /* ========== Camera utils Functions ========== */
 double		camera_half_w(t_camera camera);

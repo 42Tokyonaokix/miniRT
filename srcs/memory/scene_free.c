@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   scene_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/15 by kesaitou                  #+#    #+#              */
-/*   Updated: 2026/05/15 by kesaitou                 ###   ########.fr        */
+/*   Created: 2026/05/15 00:00:00 by                   #+#    #+#             */
+/*   Updated: 2026/05/15 17:05:10 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "memory.h"
 #include "scene.h"
 #include "intersect.h"
+#include "render.h"
+
 #include <stdlib.h>
 
 void	scene_free(t_scene *scene)

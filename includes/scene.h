@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 22:00:00 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/14 21:57:12 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/15 15:17:50 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,5 @@ typedef struct s_light
 typedef struct s_sphere     t_sphere;
 typedef struct s_plane      t_plane;
 typedef struct s_cylinder   t_cylinder;
-
-typedef struct s_scene
-{
-    t_ambient   ambient;
-    t_camera    camera;
-    t_light     light;
-    t_sphere    *spheres;
-    t_plane     *planes;
-    t_cylinder  *cylinders;
-}   t_scene;
 
 #endif

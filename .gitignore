@@ -10,4 +10,3 @@ Dockerfile
 *.o
 tests
 tests/*
-

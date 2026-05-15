@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/14 12:09:16 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/15 15:26:47 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_hit	ray_sphere_hit(t_ray ray, t_sphere *sphere)
 	hit.normal = ray_sphere_normal(*sphere, hit.point);
 	hit.obj_type = OBJ_SPHERE;
 	hit.obj_ptr = sphere;
+	hit.obj_color = sphere->color;
 	return (hit);
 }
 

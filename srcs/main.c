@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 16:30:00 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/05/15 03:48:09 by kesaitou         ###   ########.fr       */
+/*   Updated: 2026/05/15 19:51:00 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	main(int argc, char **argv)
 		return ((void)ft_dprintf(2, "%s", "Cannot open file\n"), 1);
 	ok = parse_scene(fd, &app.scene);
 	close(fd);
+	/* debug */
+	
 	scene_free(&app.scene);
 	if (!ok)
 		return (1);

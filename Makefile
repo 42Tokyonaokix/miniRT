@@ -6,7 +6,7 @@
 #    By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/02 23:20:38 by kesaitou          #+#    #+#              #
-#    Updated: 2026/05/15 14:17:24 by natakaha         ###   ########.fr        #
+#    Updated: 2026/05/15 16:53:27 by natakaha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,6 @@ MAND_SRCS = srcs/main.c \
 	srcs/render/camera.c \
 	srcs/render/camera_utils.c \
 	srcs/render/shade.c \
-	srcs/render/normal.c \
 	srcs/parser/parse1_scene.c \
 	srcs/parser/parse2_env.c \
 	srcs/parser/parse3_env_parsers.c \
@@ -109,6 +108,6 @@ fclean: clean
 	rm -f $(NAME)
 	$(MAKE) -C $(LIBFTDIR) fclean
 
-re: fclean al
+re: fclean all
 
 .PHONY: all bonus clean fclean re

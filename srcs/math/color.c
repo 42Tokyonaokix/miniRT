@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/15 14:20:14 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/15 15:30:17 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ t_color	color_add(t_color c1, t_color c2)
 	c3.g = c1.g + c2.g;
 	c3.r = c1.r + c2.r;
 	return (c3);
+}
+
+t_color	color_scale(t_color c1, double t)
+{
+	c1.b = c1.b * t;
+	c1.g = c1.g * t;
+	c1.r = c1.r * t;
+	return (c1);
 }
 
 t_color	color_mul(t_color c1, t_color c2)

@@ -290,7 +290,7 @@ void error_exit(const char *msg, t_app *a)
 
 ### 8.2 パーサー内エラー伝搬
 
-- 各 `parse_*` は `int` を返す（0 = OK, 非0 = エラー、enum でコード識別）
+- 各 `parse_*` は `int` を返す（0 = SUCCESS, 非0 = エラー、enum でコード識別）
 - 行番号は `t_parse_ctx { int lineno; const char *src; }` を引数で持ち回す
 - 失敗を検知したら **即 error_exit、それ以降は読まない**（fail-fast）
 

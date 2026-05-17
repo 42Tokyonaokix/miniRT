@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/15 23:12:57 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/17 12:00:16 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@
 # include "intersect.h"
 # include "color.h"
 
+/* ====rendering==== */
 # define WIN_H 600
 # define WIN_W 800
-# define OK 0
-# define NG 1
+
+/* =====grobal==== */
+# define SUCCESS 0
+# define FAILURE 1
 
 typedef struct s_scene
 {

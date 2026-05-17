@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/15 23:15:04 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/16 09:06:07 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 # include "scene.h"
 # include "vector.h"
 # include "render.h"
-# define GNL_CLOSE -1
+
+# define UNKNOWN -1
 
 typedef enum e_token_flags
 {
@@ -47,7 +48,7 @@ int		fill_cylinder(char **tok, t_cylinder *node);
 
 double	parse_atof(char *str, int *error);
 int		parse_vec3(char *str, t_vec3 *vec);
-int		parse_color(char *str, t_color *color);
+int		parse_color(char *str, t_color *color, char *obj_type);
 int		is_valid_float(char *str);
 
 int		parse_ranged_double(char *str, double min, double max, double *out);

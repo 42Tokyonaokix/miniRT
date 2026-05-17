@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_di.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 02:38:51 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/05/14 16:41:12 by kesaitou         ###   ########.fr       */
+/*   Updated: 2026/05/16 08:27:19 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	print_di(t_info *inf, va_list *args)
 	}
 	if (s_print_process(num_arr, inf, prec_zero, is_minus) == ERROR)
 		return (free(num_arr), ERROR);
-	return (free(num_arr), SUCCESS);
+	return (free(num_arr), OK);
 }
 
 int	s_print_process(char *num_arr, t_info *inf, size_t zero, int is_minus)
@@ -61,7 +61,7 @@ int	s_print_process(char *num_arr, t_info *inf, size_t zero, int is_minus)
 		return (ERROR);
 	if (inf->flags & F_MINUS && put_nspace(inf, pad) == ERROR)
 		return (ERROR);
-	return (SUCCESS);
+	return (OK);
 }
 
 char	*stoa_hub(va_list *args, const char *base, int *is_minus)
@@ -89,7 +89,7 @@ int	right_align(t_info *inf, size_t pad)
 		else if (put_nspace(inf, pad) == ERROR)
 			return (ERROR);
 	}
-	return (SUCCESS);
+	return (OK);
 }
 
 int	put_space_sign(t_info *inf, size_t sign, int is_minus, size_t space)
@@ -112,5 +112,5 @@ int	put_space_sign(t_info *inf, size_t sign, int is_minus, size_t space)
 		if (ft_putchar(' ', inf) == ERROR)
 			return (ERROR);
 	}
-	return (SUCCESS);
+	return (OK);
 }

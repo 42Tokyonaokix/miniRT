@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_uxx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 02:38:54 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/05/14 16:40:22 by kesaitou         ###   ########.fr       */
+/*   Updated: 2026/05/16 08:27:19 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	print_u(t_info *inf, va_list *args)
 		prec_zero = inf->precision - ft_strlen(num_arr);
 	if (u_print_process(num_arr, inf, 0, prec_zero) == ERROR)
 		return (free(num_arr), ERROR);
-	return (free(num_arr), SUCCESS);
+	return (free(num_arr), OK);
 }
 
 int	print_x(t_info *inf, va_list *args)
@@ -50,7 +50,7 @@ int	print_x(t_info *inf, va_list *args)
 		hash_len = 2;
 	if (u_print_process(num_arr, inf, hash_len, prec_zero) == ERROR)
 		return (free(num_arr), ERROR);
-	return (free(num_arr), SUCCESS);
+	return (free(num_arr), OK);
 }
 
 int	print_lx(t_info *inf, va_list *args)
@@ -72,7 +72,7 @@ int	print_lx(t_info *inf, va_list *args)
 		hash_len = 2;
 	if (u_print_process(num_arr, inf, hash_len, prec_zero) == ERROR)
 		return (free(num_arr), ERROR);
-	return (free(num_arr), SUCCESS);
+	return (free(num_arr), OK);
 }
 
 int	u_print_process(char *num_arr, t_info *inf, size_t hash, size_t zero)
@@ -100,7 +100,7 @@ int	u_print_process(char *num_arr, t_info *inf, size_t hash, size_t zero)
 		return (ERROR);
 	if (inf->flags & F_MINUS && put_nspace(inf, pad) == ERROR)
 		return (ERROR);
-	return (SUCCESS);
+	return (OK);
 }
 
 int	print_hash(t_info *inf, size_t hash)
@@ -118,5 +118,5 @@ int	print_hash(t_info *inf, size_t hash)
 				return (ERROR);
 		}
 	}
-	return (SUCCESS);
+	return (OK);
 }

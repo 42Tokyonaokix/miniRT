@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_dprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 02:38:36 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/01/17 15:23:25 by kesaitou         ###   ########.fr       */
+/*   Updated: 2026/05/16 08:27:19 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	parse_hub(const char **format, t_info *inf, va_list *args)
 	parse_specifi(format, inf);
 	if (print_hub(args, inf) == ERROR)
 		return (ERROR);
-	return (SUCCESS);
+	return (OK);
 }
 
 int	parse(const char **format, t_info *inf, va_list *args)
@@ -52,7 +52,7 @@ int	parse(const char **format, t_info *inf, va_list *args)
 			(*format)++;
 		}
 	}
-	return (SUCCESS);
+	return (OK);
 }
 
 int	ft_dprintf(int fd, const char *format, ...)

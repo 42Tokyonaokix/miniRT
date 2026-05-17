@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/15 22:12:42 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/16 08:47:18 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@
 typedef struct s_app		t_app;
 
 /* ========== Error Handling ========== */
-void	error_message(char *arg1, char *message);
+void	logging_status(char *arg1, char *message);
 
 #endif

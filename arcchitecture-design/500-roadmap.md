@@ -17,7 +17,7 @@ Phase A: 環境準備 (12h)
 
 Phase B: 数学・型 (8h)
   3. t_vec3 / t_color / t_ray + 演算関数
-  4. ユニットテスト（tests/ で OK）
+  4. ユニットテスト（tests/ で SUCCESS）
 
 Phase C: パーサー骨格 (12h、ADR-0005)
   5. parse_scene: gnl で 1 行ずつ読み、先頭トークンで dispatch

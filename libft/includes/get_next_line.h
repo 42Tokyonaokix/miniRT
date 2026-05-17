@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 11:35:18 by kesaitou          #+#    #+#             */
-/*   Updated: 2025/11/17 12:59:36 by kesaitou         ###   ########.fr       */
+/*   Updated: 2026/05/16 08:49:27 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define OPEN_MAX 10240
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000
+# define GNL_CLOSE -1
 # endif
 
 size_t	ft_strlen_gnl(const char *s);

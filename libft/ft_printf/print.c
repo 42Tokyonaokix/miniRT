@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 02:37:55 by kesaitou          #+#    #+#             */
-/*   Updated: 2025/11/16 05:53:46 by kesaitou         ###   ########.fr       */
+/*   Updated: 2026/05/16 08:27:19 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ int	print_hub(va_list *args, t_info *inf)
 		return (print_lx(inf, args));
 	else if (inf->specifier == 'p')
 		return (print_p(args, inf, "0123456789abcdef"));
-	return (SUCCESS);
+	return (OK);
 }

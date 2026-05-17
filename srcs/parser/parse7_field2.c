@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse11_field2.c                                   :+:      :+:    :+:   */
+/*   parse7_field2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/15 01:30:00 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/05/15 01:30:00 by kesaitou         ###   ########.fr       */
+/*   Updated: 2026/05/16 23:15:14 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	parse_ranged_double(char *str, double min, double max, double *out)
 
 	*out = parse_atof(str, &err);
 	if (err || *out < min || *out > max)
-		return (ft_dprintf(2, "Value out of range\n"), 0);
-	return (1);
+		return (FAILURE);
+	return (SUCCESS);
 }
 
 int	parse_positive_double(char *str, double *out)
@@ -30,20 +30,20 @@ int	parse_positive_double(char *str, double *out)
 
 	*out = parse_atof(str, &err);
 	if (err || *out <= 0)
-		return (ft_dprintf(2, "Value must be positive\n"), 0);
-	return (1);
+		return (logging_status(str, "Value must be positive"), FAILURE);
+	return (SUCCESS);
 }
 
 int	parse_direction(char *str, t_vec3 *vec)
 {
-	if (!parse_vec3(str, vec))
-		return (0);
+	if (parse_vec3(str, vec) != SUCCESS)
+		return (FAILURE);
 	if (vec->x < -1.0 || vec->x > 1.0
 		|| vec->y < -1.0 || vec->y > 1.0
 		|| vec->z < -1.0 || vec->z > 1.0)
-		return (ft_dprintf(2, "Direction component out of [-1,1]\n"), 0);
+		return (logging_status(str, "Direction component out of [-1,1]"), FAILURE);
 	if (vec3_abs(*vec) == 0)
-		return (ft_dprintf(2, "Zero direction vector\n"), 0);
+		return (logging_status(str, "Zero direction vector\n"), FAILURE);
 	*vec = vec3_normalize(*vec);
-	return (1);
+	return (SUCCESS);
 }

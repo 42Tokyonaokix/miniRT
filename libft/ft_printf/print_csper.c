@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_csper.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 02:38:48 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/01/17 15:20:55 by kesaitou         ###   ########.fr       */
+/*   Updated: 2026/05/16 08:27:19 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	print_cper(va_list *args, t_info *inf)
 		if (ft_putchar(c, inf) == ERROR)
 			return (ERROR);
 	}
-	return (SUCCESS);
+	return (OK);
 }
 
 int	print_s(va_list *args, t_info *inf)
@@ -64,5 +64,5 @@ int	print_s(va_list *args, t_info *inf)
 		if (put_nspace(inf, pad) == ERROR)
 			return (ERROR);
 	}
-	return (SUCCESS);
+	return (OK);
 }

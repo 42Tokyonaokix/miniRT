@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 02:38:38 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/05/14 16:43:12 by kesaitou         ###   ########.fr       */
+/*   Updated: 2026/05/16 08:27:19 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_putchar(char c, t_info *inf)
 	if (write(inf ->fd, &c, 1) == ERROR)
 		return (ERROR);
 	inf->total_len += 1;
-	return (SUCCESS);
+	return (OK);
 }
 
 int	ft_putstr(char *str, t_info *inf)
@@ -28,7 +28,7 @@ int	ft_putstr(char *str, t_info *inf)
 		if (ft_putchar(*str++, inf) == ERROR)
 			return (ERROR);
 	}
-	return (SUCCESS);
+	return (OK);
 }
 
 int	pf_strcmp(const char *s1, const char *s2)

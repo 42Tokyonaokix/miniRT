@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_message.c                                    :+:      :+:    :+:   */
+/*   logging_status.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "mlx_ctx.h"
 
-void	error_message(char *arg1, char *message)
+void	logging_status(char *arg1, char *message)
 {
 	ft_dprintf(STDERR_FILENO, "miniRT: %s: %s\n", arg1, message);
 }

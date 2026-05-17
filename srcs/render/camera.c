@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/16 00:06:45 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/16 08:29:06 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	camera_build_basis(t_camera	*camera)
 	}
 	camera->up = vec3_normalize(vec3_ver(world_up, camera->forward));
 	camera->right = vec3_normalize(vec3_cross(camera->forward, camera->up));
-	return (OK);
+	return (SUCCESS);
 }
 
 t_ray	camera_pixel_ray(t_camera camera, int x, int y)

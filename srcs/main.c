@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 16:30:00 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/05/16 00:36:09 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/17 12:14:56 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,26 @@ int	main(int argc, char **argv)
 {
 	t_app	app;
 	int		fd;
-	int		ok;
+	int		flag;
 
 	if (argc != 2)
-		return ((void)ft_dprintf(STDERR_FILENO, "%s", "Args Error\n"), EXIT_FAILURE);
+		return (logging_status("main", "Argument num error"), EXIT_FAILURE);
 	if (!is_valid_file_suffix((const char *)argv[1]))
-		return ((void)ft_dprintf(STDERR_FILENO, "%s", "file prefix Error\n"), EXIT_FAILURE);
+		return (logging_status("main", "file prefix Error"), EXIT_FAILURE);
 	ft_bzero(&app, sizeof(t_app));
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		return ((void)ft_dprintf(STDERR_FILENO, "%s", "Cannot open file\n"), EXIT_FAILURE);
-	ok = parse_scene(fd, &app.scene);
+		return (logging_status("main", "Cannot open file"), EXIT_FAILURE);
+	flag = parse_scene(fd, &app.scene);
 	close(fd);
-	/* debug */
-	ok = app_init(&app);
-	if (ok == OK)
-	{
-		render_loop(&app);
-		mlx_put_image_to_window(app.render.mlx, app.render.win, app.render.img, 0, 0);
-		mlx_loop(app.render.mlx);
-	}	
+	flag = app_init(&app);
+	if (flag == FAILURE)
+		return (scene_free(&app.scene), EXIT_FAILURE);
+	render_loop(&app);
+	mlx_put_image_to_window(app.render.mlx, app.render.win, app.render.img, 0, 0);
+	mlx_loop(app.render.mlx);
 	scene_free(&app.scene);
-	if (ok != OK)
+	if (flag = FAILURE);
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

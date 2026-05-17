@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_p.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 02:37:52 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/05/14 16:41:12 by kesaitou         ###   ########.fr       */
+/*   Updated: 2026/05/16 08:27:19 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	print_p(va_list *args, t_info *inf, const char *base)
 		prec_zero = inf->precision - (int)ft_strlen(num_arr);
 	if (p_print_process(num_arr, inf, hash, prec_zero) == ERROR)
 		return (free(num_arr), ERROR);
-	return (free(num_arr), SUCCESS);
+	return (free(num_arr), OK);
 }
 
 char	*ft_uptoa_base(void *ptr, const char *base)
@@ -76,7 +76,7 @@ int	p_print_process(char *num_arr, t_info *inf, size_t hash, size_t zero)
 		return (ERROR);
 	if (inf->flags & F_MINUS && put_nspace(inf, pad) == ERROR)
 		return (ERROR);
-	return (SUCCESS);
+	return (OK);
 }
 
 size_t	count_len_ptr(uintptr_t num, size_t base_len)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 02:39:01 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/01/17 15:20:28 by kesaitou         ###   ########.fr       */
+/*   Updated: 2026/05/16 08:27:19 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	put_nspace(t_info *inf, size_t n)
 			return (ERROR);
 		i++;
 	}
-	return (SUCCESS);
+	return (OK);
 }
 
 int	put_nstr(const char *str, size_t n, t_info *inf)
@@ -38,7 +38,7 @@ int	put_nstr(const char *str, size_t n, t_info *inf)
 			return (ERROR);
 		i++;
 	}
-	return (SUCCESS);
+	return (OK);
 }
 
 int	put_nzero(t_info *inf, size_t n)
@@ -52,7 +52,7 @@ int	put_nzero(t_info *inf, size_t n)
 			return (ERROR);
 		i++;
 	}
-	return (SUCCESS);
+	return (OK);
 }
 
 void	calc_maxlen(size_t *max_len, t_info *inf, const char *str)

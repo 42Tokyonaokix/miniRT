@@ -6,11 +6,12 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/16 00:35:51 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/18 17:47:07 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_ctx.h"
+#include "app.h"
 
 void	render_loop(t_app *app)
 {

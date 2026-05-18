@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/15 23:24:28 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/18 17:47:06 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_render_ctx	t_render_ctx;
 /* ========== Scene & App Cleanup ========== */
 
 void						scene_free(t_scene *scene);
-void						app_cleanup(t_app *app);
+int							app_free(t_app *app);
 void						mlx_destroy_mem(t_render_ctx *ren);
 
 #endif

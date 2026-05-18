@@ -6,7 +6,7 @@
 #    By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/02 23:20:38 by kesaitou          #+#    #+#              #
-#    Updated: 2026/05/17 12:02:02 by natakaha         ###   ########.fr        #
+#    Updated: 2026/05/18 14:47:55 by natakaha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ MAND_SRCS = srcs/main.c \
 	srcs/parser/utils1_line.c \
 	srcs/interact/key_bindings.c \
 	srcs/interact/intents.c \
+	srcs/interact/gettime.c \
 	srcs/interact/mouse_bindings.c \
 	srcs/interact/hud.c \
 	srcs/interact/selection.c \
@@ -66,6 +67,7 @@ MAND_SRCS = srcs/main.c \
 	srcs/mlx/app_init.c \
 	srcs/memory/scene_lists.c \
 	srcs/memory/app_free.c \
+	srcs/memory/mlx_free.c \
 	srcs/memory/scene_free.c \
 	srcs/error/exit_error.c \
 	srcs/error/error_message.c \
@@ -80,7 +82,8 @@ HEADERS = includes/app.h \
           includes/intersect.h \
           includes/math_utils.h \
           includes/memory.h \
-          includes/mlx.h \
+          includes/mlx_utils.h \
+          includes/interact.h \
           includes/parser.h \
           includes/render.h \
           includes/scene.h \

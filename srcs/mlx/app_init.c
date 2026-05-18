@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/16 08:47:18 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/17 12:21:37 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ int	mlx_ctx_init(t_render_ctx *ren)
 	if (ren->addr == NULL)
 		return (logging_status("app_init", "mlx_get_data_addr failed"),
 			mlx_destroy_mem(ren), FAILURE);
+	logging_status("app_init", "mlx_get_data_addr proceeded");
 	return (SUCCESS);
 }

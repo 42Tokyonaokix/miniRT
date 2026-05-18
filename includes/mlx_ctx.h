@@ -17,14 +17,41 @@
 # include "ft_printf.h"
 # include "get_next_line.h"
 # include <mlx.h>
-# include "app.h"
-# include "parser.h"
 # include "error.h"
 # include "memory.h"
+# include "interact.h"
 
 /* Forward declarations */
 typedef struct s_app		t_app;
 typedef struct s_render_ctx	t_render_ctx;
+
+// typedef enum e_linux_code
+// {
+// 	ESC = 65307,
+// 	W = 119,
+// 	S = 115,
+// 	A = 97,
+// 	D = 100,
+//	Q = 113,
+//	E = 101,
+// 	SPACE = 32,
+// 	LEFT_CTRL = 65507,
+// 	LEFT_ARR = 65361,
+// 	UP_ARR = 65362,
+// 	RIGHT_ARR = 65363,
+// 	DOWN_ARR = 65364,
+// }	t_linux_code;
+
+typedef struct s_render_ctx
+{
+    void    *mlx;
+    void    *win;
+    void    *img;
+    char    *addr;
+    int     bpp;
+    int     line_len;
+    int     endian;
+}   t_render_ctx;
 
 /* ========== MiniLibX Window & Image ========== */
 
@@ -39,5 +66,6 @@ int		pixel_detect_color(t_scene scene, int x, int y);
 
 /* ========== Main Loop Functions ========== */
 void	render_loop(t_app *app);
+int	    mlx_event_hook(t_app *app);
 
 #endif

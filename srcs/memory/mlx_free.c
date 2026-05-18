@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   app.h                                              :+:      :+:    :+:   */
+/*   app_free.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/12 22:05:00 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/18 14:51:47 by natakaha         ###   ########.fr       */
+/*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
+/*   Updated: 2026/05/18 14:34:39 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef APP_H
-# define APP_H
+#include "mlx_ctx.h"
 
-# include "libft.h"
-# include "ft_printf.h"
-# include "get_next_line.h"
-# include "scene.h"
-# include "intersect.h"
-# include "interact.h"
-# include "render.h"
-# include "mlx_ctx.h"
-
-typedef struct s_app
+void	mlx_destroy_mem(t_render_ctx *ren)
 {
-    t_scene         scene;
-    t_render_ctx    render;
-    t_input_state   input;
-}   t_app;
+	mlx_destroy_image(ren->mlx, ren->img);
+	mlx_destroy_window(ren->mlx, ren->win);
+	// mlx_destroy_display(ren->mlx);
+}
 
-
-
-int	app_init(t_app *app);
-
-#endif

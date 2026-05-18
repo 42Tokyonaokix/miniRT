@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/17 12:10:16 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/18 14:41:59 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,8 @@ int	app_init(t_app *app)
 	if (camera_build_basis(&(app->scene.camera)) == FAILURE)
 		return (FAILURE);
 	logging_status("app_init: camera_build_basis", "proceeded");
+	if (mlx_event_hook(app) == FAILURE)
+		return (FAILURE);
+	logging_status("app_init: event hooks", "preceeded");
 	return (SUCCESS);
 }

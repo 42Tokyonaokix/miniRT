@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/18 17:47:06 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/18 18:02:49 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	mlx_key_press(int keycode, void *param)
 		interact_tab(app);
 	else if (keycode == SPACE)
 		interact_space(app);
+	else if (keycode == ENTER)
+		interact_enter(app);
 	return (0);
 }
 

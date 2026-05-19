@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/18 17:47:06 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/20 01:57:38 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "get_next_line.h"
 # include "libft.h"
 # include "memory.h"
+# include "render.h"
 
 /* Forward declarations */
 typedef struct s_input_state	t_input_state;
@@ -27,25 +28,43 @@ typedef struct s_sphere			t_sphere;
 typedef struct s_plane			t_plane;
 typedef struct s_cylinder		t_cylinder;
 typedef struct s_app			t_app;
-typedef struct s_selection		t_selection;
+typedef struct s_selection		t_selectionF;
 
-typedef enum e_mac_code
+typedef enum e_linux_code
 {
-	ESC = 53,
-	W = 13,
-	S = 1,
-	A = 0,
-	D = 2,
-	Q = 12,
-	E = 14,
-	TAB = 48,
-	SPACE = 49,
-	ENTER = 36,
-	LEFT_ARR = 123,
-	UP_ARR = 126,
-	RIGHT_ARR = 124,
-	DOWN_ARR = 125,
-}	t_mac_code;
+	ESC = 65307,
+	W = 119,
+	S = 115,
+	A = 97,
+	D = 100,
+	Q = 113,
+	E = 101,
+	TAB = 65289,
+	SPACE = 32,
+	ENTER = 65293,
+	LEFT_ARR = 65361,
+	UP_ARR = 65362,
+	RIGHT_ARR = 65363,
+	DOWN_ARR = 65364,
+} 	t_mac_code;
+
+// typedef enum e_mac_code
+// {
+// 	ESC = 53,
+// 	W = 13,
+// 	S = 1,
+// 	A = 0,
+// 	D = 2,
+// 	Q = 12,
+// 	E = 14,
+// 	TAB = 48,
+// 	SPACE = 49,
+// 	ENTER = 36,
+// 	LEFT_ARR = 123,
+// 	UP_ARR = 126,
+// 	RIGHT_ARR = 124,
+// 	DOWN_ARR = 125,
+// } 	t_linux_code;
 
 typedef	enum e_mode
 {
@@ -85,8 +104,9 @@ typedef enum e_intent
 typedef struct s_input_state
 {
 	t_selection     selected;
-	int				start[10];
-	int			    buf[10];
+	int				m_buf[2];
+	int				k_start[10];
+	int			    k_buf[10];
 	t_mode			mode;
 }   t_input_state;
 
@@ -98,6 +118,10 @@ void	interact_mouse_press(t_app *app, int x, int y);
 void	interact_mouse_release(t_app *app, int x, int y);
 
 /* ========== Selection Functions ========== */
+void	interact_next_selection(t_scene *scene, t_selection *current);
+t_select_kind	interact_print_selection(t_select_kind kind);
+void	interact_print_obj(t_obj_type type);
+void	*interact_select_ptr(t_scene *scene, t_select_kind kind);
 
 /* ========== Transform Apply Functions ========== */
 
@@ -106,8 +130,10 @@ int	mlx_key_press(int keycode, void *param);
 int	mlx_key_release(int keycode, void *param);
 
 /* ========== Mouse Bindings ========== */
-int	mlx_mouse_press(void *param);
-int	mlx_mouse_release(void *param);
+int	mlx_mouse_press(int button, int x, int y, void *param);
+int	mlx_mouse_release(int button, int x, int y, void *param);
+void	interact_pointer_obj(t_app *app, int x, int y);
+void	interact_pointer_diff(t_app *app, int x, int y);
 
 /* ========== HUD (optional) ========== */
 void	time_press(int *ll_time);

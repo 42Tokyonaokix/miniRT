@@ -1,41 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_bindings.c                                   :+:      :+:    :+:   */
+/*   mouse_select.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/19 21:03:28 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/20 02:08:29 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interact.h"
 #include "app.h"
 
-int	mlx_mouse_press(int button, int x, int y, void *param)
+
+void	interact_pointer_obj(t_app *app, int x, int y)
 {
-	t_app			*app;
-	t_render_ctx	render;
+	t_ray	ray;
+	t_hit	hit;
 
-	(void)button;
-	app = (t_app *)param;
-	render = app->render;
-	mlx_mouse_get_pos(render.mlx, render.win, &x, &y);
-	interact_mouse_press(app, x, y);
-	return (0);
+	ray = camera_pixel_ray(app->scene.camera, x, y);
+	hit = ray_closest_hit(ray,
+		app->scene.spheres, app->scene.planes, app->scene.cylinders);
+	if (!hit.obj_ptr)
+	{
+		
+	}
 }
-
-int	mlx_mouse_release(int button, int x, int y, void *param)
-{
-	t_app			*app;
-	t_render_ctx	render;
-
-	(void)button;
-	app = (t_app *)param;
-	render = app->render;
-	mlx_mouse_get_pos(render.mlx, render.win, &x, &y);
-	interact_mouse_release(app, x, y);
-	return (0);
-}
-

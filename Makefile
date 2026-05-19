@@ -6,7 +6,7 @@
 #    By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/02 23:20:38 by kesaitou          #+#    #+#              #
-#    Updated: 2026/05/18 14:47:55 by natakaha         ###   ########.fr        #
+#    Updated: 2026/05/20 01:39:53 by natakaha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,9 @@ MAND_SRCS = srcs/main.c \
 	srcs/interact/gettime.c \
 	srcs/interact/mouse_bindings.c \
 	srcs/interact/hud.c \
-	srcs/interact/selection.c \
+	srcs/interact/key_select.c \
+	srcs/interact/mouse_select.c \
+	srcs/interact/select_utils.c \
 	srcs/interact/transform_apply.c \
 	srcs/mlx/hooks.c \
 	srcs/mlx/render_loop.c \

@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/18 18:02:49 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/20 01:11:12 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,58 +56,58 @@ int	mlx_key_release(int keycode, void *param)
 
 static void	interact_key_press(int keycode, t_app *app)
 {
-	int	*start;
+	int	*k_start;
 
-	start = app->input.start;
+	k_start = app->input.k_start;
 	if (keycode == W)
-		time_press(&start[T_FORWARD]);
+		time_press(&k_start[T_FORWARD]);
 	else if (keycode == S)
-		time_press(&start[T_BACK]);
+		time_press(&k_start[T_BACK]);
 	else if (keycode == A)
-		time_press(&start[T_LEFT]);
+		time_press(&k_start[T_LEFT]);
 	else if (keycode == D)
-		time_press(&start[T_RIGHT]);
+		time_press(&k_start[T_RIGHT]);
 	else if (keycode == E)
-		time_press(&start[T_DOWN]);
+		time_press(&k_start[T_DOWN]);
 	else if (keycode == Q)
-		time_press(&start[T_UP]);
+		time_press(&k_start[T_UP]);
 	else if (keycode == LEFT_ARR)
-		time_press(&start[R_LEFT]);
+		time_press(&k_start[R_LEFT]);
 	else if (keycode == RIGHT_ARR)
-		time_press(&start[R_RIGHT]);
+		time_press(&k_start[R_RIGHT]);
 	else if (keycode == UP_ARR)
-		time_press(&start[R_UP]);
+		time_press(&k_start[R_UP]);
 	else if (keycode == DOWN_ARR)
-		time_press(&start[R_DOWN]);
+		time_press(&k_start[R_DOWN]);
 	ft_dprintf(2, "%d was pressed\n", keycode);
 }
 
 static void	interact_key_release(int keycode, t_app *app)
 {
-	int	*start;
-	int	*buf;
+	int	*k_start;
+	int	*k_buf;
 
-	start = app->input.start;
-	buf = app->input.buf;
+	k_start = app->input.k_start;
+	k_buf = app->input.k_buf;
 	if (keycode == W)
-		time_release(&start[0], &buf[0]);
+		time_release(&k_start[0], &k_buf[0]);
 	else if (keycode == S)
-		time_release(&start[1], &buf[1]);
+		time_release(&k_start[1], &k_buf[1]);
 	else if (keycode == A)
-		time_release(&start[2], &buf[2]);
+		time_release(&k_start[2], &k_buf[2]);
 	else if (keycode == D)
-		time_release(&start[3], &buf[3]);
+		time_release(&k_start[3], &k_buf[3]);
 	else if (keycode == E)
-		time_release(&start[4], &buf[4]);
+		time_release(&k_start[4], &k_buf[4]);
 	else if (keycode == Q)
-		time_release(&start[5], &buf[5]);
+		time_release(&k_start[5], &k_buf[5]);
 	else if (keycode == LEFT_ARR)
-		time_release(&start[6], &buf[6]);
+		time_release(&k_start[6], &k_buf[6]);
 	else if (keycode == RIGHT_ARR)
-		time_release(&start[7], &buf[7]);
+		time_release(&k_start[7], &k_buf[7]);
 	else if (keycode == UP_ARR)
-		time_release(&start[8], &buf[8]);
+		time_release(&k_start[8], &k_buf[8]);
 	else if (keycode == DOWN_ARR)
-		time_release(&start[9], &buf[9]);
+		time_release(&k_start[9], &k_buf[9]);
 	ft_dprintf(2, "%d was released\n", keycode);
 }

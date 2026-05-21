@@ -6,7 +6,7 @@
 #    By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/02 23:20:38 by kesaitou          #+#    #+#              #
-#    Updated: 2026/05/21 17:20:44 by natakaha         ###   ########.fr        #
+#    Updated: 2026/05/21 19:15:46 by natakaha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ LDLIBS = -lft -lmlx $(MLX_LIBS)
 MAND_SRCS = srcs/main.c \
 	srcs/math/color.c \
 	srcs/math/quadratic.c \
-	srcs/math/rodrigues.c \
+	srcs/math/rodriges.c \
 	srcs/math/vec3_dot_cross.c \
 	srcs/math/vec3_hor_ver.c \
 	srcs/math/vec3_ops.c \

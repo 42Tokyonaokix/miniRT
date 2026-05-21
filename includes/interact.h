@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/21 17:19:05 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/21 19:14:03 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef struct s_sphere			t_sphere;
 typedef struct s_plane			t_plane;
 typedef struct s_cylinder		t_cylinder;
 typedef struct s_app			t_app;
-typedef struct s_selection		t_selectionF;
 
 // typedef enum e_linux_code
 // {
@@ -48,7 +47,7 @@ typedef struct s_selection		t_selectionF;
 // 	DOWN_ARR = 65364,
 // } 	t_mac_code;
 
-typedef enum e_mac_code
+typedef enum e_code
 {
 	ESC = 53,
 	W = 13,
@@ -64,7 +63,7 @@ typedef enum e_mac_code
 	UP_ARR = 126,
 	RIGHT_ARR = 124,
 	DOWN_ARR = 125,
-} 	t_linux_code;
+} 	t_code;
 
 typedef	enum e_mode
 {

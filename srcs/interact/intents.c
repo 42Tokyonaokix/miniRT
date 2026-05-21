@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/21 17:15:53 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/21 17:29:05 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void	interact_enter(t_app *app)
 {
 	translate_motion(app->scene.camera, app->input);
 	interact_move(&(app->input.selected), &(app->input.move));
-	ft_bzero(&(app->input.move), sizeof(t_move));	
+	ft_bzero(&(app->input.move), sizeof(t_move));
+	render_loop(app);
+	mlx_put_image_to_window(app->render.mlx, app->render.win,
+		app->render.img, 0, 0);	
 	logging_status("Enter", "Enter was pressed");
 }
 

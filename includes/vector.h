@@ -52,7 +52,6 @@ t_vec3	vec3_hor(t_vec3 v, t_vec3 axis);
 
 
 /* ========== Vec3 Rotation (Rodrigues) ========== */
-
-
+t_vec3	vec3_rodriges(t_vec3 v, t_vec3 axis, double angle);
 
 #endif

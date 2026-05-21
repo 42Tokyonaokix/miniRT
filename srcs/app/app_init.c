@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/19 20:35:07 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/20 23:18:27 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ int	app_init(t_app *app)
 	if (mlx_ctx_init(&(app->render)) == FAILURE)
 		return (FAILURE);
 	logging_status("app_init: mlx_ctx_init", "proceeded");
-	if (camera_build_basis(&(app->scene.camera)) == FAILURE)
-		return (FAILURE);
+	camera_build_basis(&(app->scene.camera));
 	logging_status("app_init: camera_build_basis", "proceeded");
 	if (mlx_event_hook(app) == FAILURE)
 		return (FAILURE);

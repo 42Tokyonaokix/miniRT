@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_select.c                                     :+:      :+:    :+:   */
+/*   translation.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/20 02:08:29 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/21 17:08:06 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interact.h"
-#include "app.h"
 
-
-void	interact_pointer_obj(t_app *app, int x, int y)
+t_vec3	interact_get_center(t_selection sel)
 {
-	t_ray	ray;
-	t_hit	hit;
-
-	ray = camera_pixel_ray(app->scene.camera, x, y);
-	hit = ray_closest_hit(ray,
-		app->scene.spheres, app->scene.planes, app->scene.cylinders);
-	if (!hit.obj_ptr)
-	{
-		
-	}
+	if (sel.kind == SEL_LIGHT)
+		return (((t_light *)sel.obj_ptr)->position);
+	else if (sel.kind == SEL_OBJECT && sel.obj_type == OBJ_SPHERE)
+		return (((t_sphere *)sel.obj_ptr)->center);
+	else if (sel.kind == SEL_OBJECT && sel.obj_type == OBJ_PLANE)
+		return (((t_plane *)sel.obj_ptr)->point);
+	else if (sel.kind == SEL_OBJECT && sel.obj_type == OBJ_CYLINDER)
+		return (((t_cylinder *)sel.obj_ptr)->center);
+	return (((t_camera *)sel.obj_ptr)->position);
 }

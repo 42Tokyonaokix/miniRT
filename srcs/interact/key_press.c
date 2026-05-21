@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_bindings.c                                     :+:      :+:    :+:   */
+/*   key_press.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/21 17:02:08 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/21 21:48:29 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interact.h"
 #include "app.h"
 
-static void	interact_key_press(int keycode, t_app *app);
+static void	interact_space(t_app *app);
+static void	interact_direct(int keycode, t_app *app);
+static void	interact_enter(t_app *app);
+static void	interact_tab(t_app *app);
 
 int	mlx_key_press(int keycode, void *param)
 {
@@ -28,7 +31,7 @@ int	mlx_key_press(int keycode, void *param)
 		|| keycode == E || keycode == Q
 		|| keycode == LEFT_ARR || keycode == RIGHT_ARR
 		|| keycode == UP_ARR || keycode == DOWN_ARR)
-		interact_key_press(keycode, app);
+		interact_direct(keycode, app);
 	else if (keycode == TAB)
 		interact_tab(app);
 	else if (keycode == SPACE)
@@ -38,7 +41,43 @@ int	mlx_key_press(int keycode, void *param)
 	return (0);
 }
 
-static void	interact_key_press(int keycode, t_app *app)
+static void	interact_space(t_app *app)
+{
+	interact_next_selection(&app->scene, &app->input.selected);		
+}
+
+static void	interact_enter(t_app *app)
+{
+	if (app->input.selected.kind == SEL_NONE)
+		return ;
+	translate_motion(app->scene.camera, &app->input);
+	interact_motion(&(app->input.selected), (app->input.move));
+	print_motion(app->input);
+	ft_bzero(&(app->input.move), sizeof(t_move));
+	ft_bzero(&app->input.input, sizeof(int) * 5);
+	render_loop(app);
+	mlx_put_image_to_window(app->render.mlx, app->render.win,
+		app->render.img, 0, 0);	
+}
+
+static void	interact_tab(t_app *app)
+{
+	t_mode	*mode;
+
+	mode = &(app->input.mode);
+	if (*mode == TRANSLATE)
+	{
+		*mode = ROTATE;
+		logging_status("mode chanded", "ROTATE MODE");
+	}
+	else
+	{
+		logging_status("mode chanded", "TRANSLATE MODE");
+		*mode = TRANSLATE;
+	}
+}
+
+static void	interact_direct(int keycode, t_app *app)
 {
 	int	*input;
 
@@ -63,5 +102,18 @@ static void	interact_key_press(int keycode, t_app *app)
 		input[R_UP]++;
 	else if (keycode == DOWN_ARR)
 		input[R_UP]--;
-	ft_dprintf(2, "%d was pressed\n", keycode);
 }
+
+// void	interact_mouse_press(t_app *app, int x, int y)
+// {
+// 	interact_pointer_obj(app, x, y);
+// 	ft_dprintf(STDERR_FILENO, "mouse pressed x: %d, y: %d\n", x, y);
+
+// }
+
+// void	interact_mouse_release(t_app *app, int x, int y)
+// {
+// 	ft_dprintf(STDERR_FILENO, "mouse released x: %d, y: %d\n", x, y);
+// 	interact_pointer_diff(app, x, y);
+// 	(void)app;
+// }

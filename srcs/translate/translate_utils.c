@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   trans_tuils.c                                      :+:      :+:    :+:   */
+/*   translate_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/21 16:49:48 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/21 21:42:06 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interact.h"
 
-t_vec3	detect_axis(t_camera camera, t_input_state input)
+t_vec3	detect_axis(t_camera camera, int up, int right)
 {
 	t_vec3	axis_right;
 	t_vec3	axis_up;
 	t_vec3	axis;
 
-	axis_right = vec3_scale(camera.right, input.input[T_UP] * -1);
-	axis_up = vec3_scale(camera.up, input.input[T_RIGHT]);
+	axis_right = vec3_scale(camera.right, up * -1);
+	axis_up = vec3_scale(camera.up, right);
 	axis = vec3_add(axis_right, axis_up);
 	return (axis);
 }
@@ -39,9 +39,9 @@ t_vec3	vec3_tlanslated(t_camera camera, t_input_state input)
 	t_vec3	axis;
 	double	angle;
 
-	axis = detect_axis(camera, input);
+	axis = detect_axis(camera, input.input[T_UP], input.input[T_RIGHT]);
 	angle = detect_distance(input.input[T_UP], input.input[T_RIGHT]) /
-		WIN_W * camera.fov_deg / 180 * M_PI;	
+		WIN_W * camera.fov_deg / 180 * M_PI;
 	vector = vec3_sub(interact_get_center(input.selected), camera.position);
 	rotate = vec3_rodriges(vector, axis, angle);
 	return (vec3_add(rotate, camera.position));	
@@ -56,6 +56,8 @@ t_vec3	vec3_forward(t_camera camera, t_input_state input, t_vec3 sub)
 
 	distance_3d = vec3_abs(sub);
 	distance_2d = detect_distance(input.input[T_UP], input.input[T_RIGHT]);	
+	if (distance_2d < EPS)
+		return (ft_bzero(&forward, sizeof(t_vec3)), forward);
 	forward_3d = distance_3d * input.input[T_FORWARD] / distance_2d;
 	forward = vec3_scale(camera.forward, forward_3d);
 	return (forward);

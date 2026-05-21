@@ -1,19 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   selection.c                                        :+:      :+:    :+:   */
+/*   key_select.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/20 01:38:16 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/21 19:38:00 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "interact.h"
 #include "app.h"
 
-void	interact_valid_obj(t_scene *scene, t_selection *current)
+static void	interact_valid_obj(t_scene *scene, t_selection *current);
+static void	interact_next_obj(t_scene *scene, t_selection *current);
+
+void	interact_next_selection(t_scene *scene, t_selection *current)
+{
+	if (current->kind == SEL_NONE)
+	{
+		current->kind = interact_print_selection(SEL_CAMERA);
+		current->obj_ptr = interact_select_ptr(scene, current->kind);
+	}
+	else if (current->kind == SEL_CAMERA)
+	{
+		current->kind = interact_print_selection(SEL_LIGHT);
+		current->obj_ptr = interact_select_ptr(scene, current->kind);
+	}
+	else if (current->kind == SEL_LIGHT)
+	{
+		current->kind = SEL_OBJECT;
+		current->obj_type = OBJ_NONE;
+		current->obj_ptr = NULL;
+	}
+	if (current->kind == SEL_OBJECT)
+	{
+		interact_next_obj(scene, current);
+		interact_print_obj(current->obj_type);			
+	}
+}
+
+static void	interact_valid_obj(t_scene *scene, t_selection *current)
 {
 	if (current->obj_type == OBJ_NONE)
 	{
@@ -41,7 +69,7 @@ void	interact_valid_obj(t_scene *scene, t_selection *current)
 	current->obj_ptr = NULL;
 }
 
-void	interact_next_obj(t_scene *scene, t_selection *current)
+static void	interact_next_obj(t_scene *scene, t_selection *current)
 {
 	t_sphere	*sphere;
 	t_plane		*plane;
@@ -66,30 +94,5 @@ void	interact_next_obj(t_scene *scene, t_selection *current)
 		cylinder = current->obj_ptr;
 		current->obj_ptr = cylinder->next;
 		interact_valid_obj(scene, current);
-	}
-}
-
-void	interact_next_selection(t_scene *scene, t_selection *current)
-{
-	if (current->kind == SEL_NONE)
-	{
-		current->kind = interact_print_selection(SEL_CAMERA);
-		current->obj_ptr = interact_select_ptr(scene, current->kind);
-	}
-	else if (current->kind == SEL_CAMERA)
-	{
-		current->kind = interact_print_selection(SEL_LIGHT);
-		current->obj_ptr = interact_select_ptr(scene, current->kind);
-	}
-	else if (current->kind == SEL_LIGHT)
-	{
-		current->kind = SEL_OBJECT;
-		current->obj_type = OBJ_NONE;
-		current->obj_ptr = NULL;
-	}
-	if (current->kind == SEL_OBJECT)
-	{
-		interact_next_obj(scene, current);
-		interact_print_obj(current->obj_type);			
 	}
 }

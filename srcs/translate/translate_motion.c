@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/21 22:02:41 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/22 01:35:36 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	translate_rotation(t_camera camera, t_input_state *input)
 	input->move.axis = vec3_normalize(detect_axis(camera,
 			input->input[R_UP], input->input[R_RIGHT]));
 	distance = detect_distance(input->input[R_UP], input->input[R_RIGHT]);
-	input->move.angle = distance * M_PI / WIN_H;
+	input->move.angle = distance * M_PI / WIN_H * 10;
 }
 
 static void	translate_translation(t_camera camera, t_input_state *input)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   motion.c                                           :+:      :+:    :+:   */
+/*   move_objects.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/20 23:27:53 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/22 01:55:46 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ void	move_cylinder(t_cylinder *cylinder, t_move move)
 void	move_camera(t_camera *camera, t_move move)
 {
 	camera->position = vec3_add(camera->position, move.v_tls);
+	move.axis = vec3_scale(move.axis, -1);
 	camera->forward = vec3_rodriges(camera->forward, move.axis, move.angle);
-	camera_build_basis(camera);
+	camera->up = vec3_rodriges(camera->up, move.axis, move.angle);
+	camera->right = vec3_rodriges(camera->right, move.axis, move.angle);
 }
 
 void	move_light(t_light *light, t_move move)

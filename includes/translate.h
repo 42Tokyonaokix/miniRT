@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 20:20:00 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/21 21:29:13 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/22 03:33:55 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 t_vec3		detect_axis(t_camera camera, int up, int right);
 double		detect_distance(double d1, double d2);
 t_vec3		vec3_tlanslated(t_camera camera, t_input_state input);
-t_vec3		vec3_forward(t_camera camera, t_input_state input, t_vec3 sub);
+t_vec3		vec3_forward(t_camera camera, t_input_state input);
 void		translate_motion(t_camera camera, t_input_state *input);
 void		move_sphere(t_sphere *sphere, t_move move);
 void		move_plane(t_plane *plane, t_move move);

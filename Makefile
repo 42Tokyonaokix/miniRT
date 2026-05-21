@@ -6,7 +6,7 @@
 #    By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/02 23:20:38 by kesaitou          #+#    #+#              #
-#    Updated: 2026/05/21 20:02:53 by natakaha         ###   ########.fr        #
+#    Updated: 2026/05/22 02:55:37 by natakaha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,8 @@ MAND_SRCS = srcs/main.c \
 	srcs/interact/next_selection.c \
 	srcs/interact/select_utils.c \
 	srcs/interact/mouse_bindings.c \
+	srcs/interact/mouse_press.c \
+	srcs/interact/mouse_release.c \
 	srcs/translate/move_objects.c \
 	srcs/translate/translate_motion.c \
 	srcs/translate/translate_utils.c \

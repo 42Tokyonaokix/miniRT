@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/22 01:33:27 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/22 05:36:56 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_vec3	detect_axis(t_camera camera, int up, int right)
 	axis_right = vec3_scale(camera.right, up * -1);
 	axis_up = vec3_scale(camera.up, right);
 	axis = vec3_add(axis_right, axis_up);
+	axis = vec3_normalize(axis);
 	return (axis);
 }
 
@@ -35,30 +36,32 @@ double	detect_distance(double d1, double d2)
 t_vec3	vec3_tlanslated(t_camera camera, t_input_state input)
 {
 	t_vec3	vector;
-	t_vec3	rotate;
 	t_vec3	axis;
 	double	angle;
 
 	axis = detect_axis(camera, input.input[T_UP], input.input[T_RIGHT]);
-	angle = detect_distance(input.input[T_UP], input.input[T_RIGHT]) /
-		WIN_W * camera.fov_deg / 180 * M_PI;
+	angle = detect_distance(input.input[T_UP], input.input[T_RIGHT]) / WIN_W *
+	camera.fov_deg / 180 * M_PI;
 	vector = vec3_sub(interact_get_center(input.selected), camera.position);
-	rotate = vec3_rodriges(vector, axis, angle);
-	return (vec3_add(rotate, camera.position));	
+	vector = vec3_rodriges(vector, axis, angle);
+	vector = vec3_add(vector, camera.position);
+	vector = vec3_sub(vector, interact_get_center(input.selected));
+	if (vec3_sq(vector) < EPS * EPS)
+		vector = vec3_add(vec3_scale(camera.right, input.input[T_RIGHT]),
+			vec3_scale(camera.up, input.input[T_UP]));
+	return (vector); 	
 }
 
-t_vec3	vec3_forward(t_camera camera, t_input_state input, t_vec3 sub)
+t_vec3	vec3_forward(t_camera camera, t_input_state input)
 {
-	double	distance_3d;
-	double	distance_2d;
-	double	forward_3d;
-	t_vec3	forward;
+	double	distance_xy;
+	double	distance_z;
+	t_vec3	vec3_forward;
 
-	distance_3d = vec3_abs(sub);
-	distance_2d = detect_distance(input.input[T_UP], input.input[T_RIGHT]);	
-	if (distance_2d < EPS)
-		return (ft_bzero(&forward, sizeof(t_vec3)), forward);
-	forward_3d = distance_3d * input.input[T_FORWARD] / distance_2d;
-	forward = vec3_scale(camera.forward, forward_3d);
-	return (forward);
+	input.input[T_UP] = 0;
+	input.input[T_RIGHT] = WIN_W;
+	distance_xy = vec3_abs(vec3_tlanslated(camera, input));
+	distance_z = distance_xy * input.input[T_FORWARD] / WIN_W;	
+	vec3_forward = vec3_scale(camera.forward, distance_z);
+	return (vec3_forward);
 }

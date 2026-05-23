@@ -74,7 +74,7 @@ MAND_SRCS = srcs/main.c \
 	srcs/memory/mlx_free.c \
 	srcs/memory/scene_free.c \
 	srcs/error/exit_error.c \
-	srcs/error/error_message.c \
+	srcs/print/log.c \
 	srcs/app/app_init.c \
 
 MAND_OBJS = $(MAND_SRCS:.c=.o)
@@ -87,8 +87,8 @@ HEADERS = includes/app.h \
           includes/math_utils.h \
           includes/memory.h \
           includes/mlx_utils.h \
-          includes/interact.h \
           includes/parser.h \
+          includes/print.h \
           includes/render.h \
           includes/scene.h \
           includes/vector.h

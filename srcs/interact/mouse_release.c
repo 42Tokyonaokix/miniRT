@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/22 04:33:39 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/22 16:33:34 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	mouse_right_release(t_app *app, int x, int y)
 {	
 	if (app->input.selected.kind == SEL_NONE)
 		return ;
-	app->input.input[R_RIGHT] = x - app->input.buf[R_RIGHT];
+	app->input.input[R_RIGHT] = -(x - app->input.buf[R_RIGHT]);
 	app->input.input[R_UP] = y - app->input.buf[R_UP];
 	translate_motion(app->scene.camera, &app->input);
 	interact_motion(&(app->input.selected), (app->input.move));

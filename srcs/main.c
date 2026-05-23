@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 16:30:00 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/05/18 14:32:04 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/22 16:32:46 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,4 @@ int	main(int argc, char **argv)
 	mlx_put_image_to_window(app.render.mlx, app.render.win, app.render.img, 0, 0);
 	mlx_loop(app.render.mlx);
 	scene_free(&app.scene);
-	if (flag == FAILURE)
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
 }

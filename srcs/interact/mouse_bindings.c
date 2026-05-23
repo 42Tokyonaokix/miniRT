@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/22 04:21:07 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/22 16:31:10 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ static void	interact_mouse_release(t_app *app, int button, int x, int y);
 int	mlx_mouse_press(int button, int x, int y, void *param)
 {
 	t_app			*app;
-	t_render_ctx	render;
-
+	
 	app = (t_app *)param;
-	render = app->render;
 	interact_mouse_press(app, button, x, y);
 	return (0);
 }
@@ -30,10 +28,8 @@ int	mlx_mouse_press(int button, int x, int y, void *param)
 int	mlx_mouse_release(int button, int x, int y, void *param)
 {
 	t_app			*app;
-	t_render_ctx	render;
 
 	app = (t_app *)param;
-	render = app->render;
 	interact_mouse_release(app, button, x, y);
 	return (0);
 }

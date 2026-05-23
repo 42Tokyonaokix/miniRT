@@ -42,6 +42,7 @@ miniRT の **実装ブループリント**。要件定義書 `../002-requirement
 | [200-data-and-modules.md](./200-data-and-modules.md) | 全データ型（vec3 / shape / scene / app）/ 層構成 / ディレクトリ / メモリ所有権 |
 | [300-algorithms.md](./300-algorithms.md) | 描画ループ / primary ray（half_w・アスペクト・特異点）/ 交差判定（球・平面・円柱）/ shading / 法線 / Rodrigues |
 | [400-interaction-and-errors.md](./400-interaction-and-errors.md) | 入力モデル / selection / キーボード / マウス click + drag / エラー方針 |
+| [410-key-mouse-io-reference.md](./410-key-mouse-io-reference.md) | キー・マウス操作 ↔ 出力（ターミナルログ）の対応表 / print_motion 書式 / 既知の注意点 |
 | [500-roadmap.md](./500-roadmap.md) | Phase A〜H の実装順 / オープン課題 |
 | [600-mlx-cheatsheet.md](./600-mlx-cheatsheet.md) | MiniLibX API シグネチャ + 使う順 + OS 差 |
 | [610-allowed-functions-cheatsheet.md](./610-allowed-functions-cheatsheet.md) | miniRT で使える関数 / 使わないほうがよいもの / 実装判断の早見表 |

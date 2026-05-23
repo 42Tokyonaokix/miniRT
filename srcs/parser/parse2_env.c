@@ -17,7 +17,7 @@
 static int	handle_ambient(t_scene *s, char **tok, unsigned char *flags)
 {
 	if (*flags & FLAG_A)
-		return (logging_status("ambient", "multiple detection"), FAILURE);
+		return (logging_err("ambient", "multiple detection"), FAILURE);
 	if (parse_ambient(tok, &s->ambient) != SUCCESS)
 		return (FAILURE);
 	*flags |= FLAG_A;
@@ -27,7 +27,7 @@ static int	handle_ambient(t_scene *s, char **tok, unsigned char *flags)
 static int	handle_camera(t_scene *s, char **tok, unsigned char *flags)
 {
 	if (*flags & FLAG_C)
-		return (logging_status("camera", "multiple detection"), FAILURE);
+		return (logging_err("camera", "multiple detection"), FAILURE);
 	if (parse_camera(tok, &s->camera) != SUCCESS)
 		return (FAILURE);
 	*flags |= FLAG_C;
@@ -37,7 +37,7 @@ static int	handle_camera(t_scene *s, char **tok, unsigned char *flags)
 static int	handle_light(t_scene *s, char **tok, unsigned char *flags)
 {
 	if (*flags & FLAG_L)
-		return (logging_status("light", "Duplicate light"), FAILURE);
+		return (logging_err("light", "Duplicate light"), FAILURE);
 	if (parse_light(tok, &s->light) != SUCCESS)
 		return (FAILURE);
 	*flags |= FLAG_L;

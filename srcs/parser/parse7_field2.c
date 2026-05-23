@@ -30,7 +30,7 @@ int	parse_positive_double(char *str, double *out)
 
 	*out = parse_atof(str, &err);
 	if (err || *out <= 0)
-		return (logging_status(str, "Value must be positive"), FAILURE);
+		return (logging_err(str, "Value must be positive"), FAILURE);
 	return (SUCCESS);
 }
 
@@ -41,9 +41,9 @@ int	parse_direction(char *str, t_vec3 *vec)
 	if (vec->x < -1.0 || vec->x > 1.0
 		|| vec->y < -1.0 || vec->y > 1.0
 		|| vec->z < -1.0 || vec->z > 1.0)
-		return (logging_status(str, "Direction component out of [-1,1]"), FAILURE);
+		return (logging_err(str, "Direction component out of [-1,1]"), FAILURE);
 	if (vec3_abs(*vec) == 0)
-		return (logging_status(str, "Zero direction vector\n"), FAILURE);
+		return (logging_err(str, "Zero direction vector\n"), FAILURE);
 	*vec = vec3_normalize(*vec);
 	return (SUCCESS);
 }

@@ -19,10 +19,10 @@ int	parse_sphere(char **tok, t_sphere **spheres)
 	t_sphere	*node;
 
 	if (count_tokens(tok) != 4)
-		return (logging_status("sphere", "Invalid sphere format"), FAILURE);
+		return (logging_err("sphere", "Invalid sphere format"), FAILURE);
 	node = malloc(sizeof(t_sphere));
 	if (!node)
-		return (logging_status("parse_sphere", "FATAL ERROR detected"), FAILURE);
+		return (logging_err("parse_sphere", "FATAL ERROR detected"), FAILURE);
 	if (fill_sphere(tok, node) != SUCCESS)
 		return (free(node), FAILURE);
 	node->next = *spheres;
@@ -35,10 +35,10 @@ int	parse_plane(char **tok, t_plane **planes)
 	t_plane	*node;
 
 	if (count_tokens(tok) != 4)
-		return (logging_status("plane", "Invalid plane format\n"), FAILURE);
+		return (logging_err("plane", "Invalid plane format\n"), FAILURE);
 	node = malloc(sizeof(t_plane));
 	if (!node)
-		return (logging_status("parse_plane", "FATAL ERROR detected"), FAILURE);
+		return (logging_err("parse_plane", "FATAL ERROR detected"), FAILURE);
 	if (fill_plane(tok, node) != SUCCESS)
 		return (free(node), FAILURE);
 	node->next = *planes;
@@ -51,10 +51,10 @@ int	parse_cylinder(char **tok, t_cylinder **cylinders)
 	t_cylinder	*node;
 
 	if (count_tokens(tok) != 6)
-		return (logging_status("cylinder", "Invalid cylinder format"), FAILURE);
+		return (logging_err("cylinder", "Invalid cylinder format"), FAILURE);
 	node = malloc(sizeof(t_cylinder));
 	if (!node)
-		return (logging_status("cylinder", "Memory allocation failed"), FAILURE);
+		return (logging_err("cylinder", "Memory allocation failed"), FAILURE);
 	if (fill_cylinder(tok, node) != SUCCESS)
 		return (free(node), FAILURE);
 	node->next = *cylinders;

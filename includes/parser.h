@@ -17,6 +17,7 @@
 # include "ft_printf.h"
 # include "get_next_line.h"
 # include "libft.h"
+# include "print.h"
 # include "scene.h"
 # include "vector.h"
 # include "render.h"

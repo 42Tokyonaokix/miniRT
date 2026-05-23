@@ -40,13 +40,13 @@ int	main(int argc, char **argv)
 	int		flag;
 
 	if (argc != 2)
-		return (logging_status("main", "Argument num error"), EXIT_FAILURE);
+		return (logging_err("main", "Argument num error"), EXIT_FAILURE);
 	if (!is_valid_file_suffix((const char *)argv[1]))
-		return (logging_status("main", "file prefix Error"), EXIT_FAILURE);
+		return (logging_err("main", "file prefix Error"), EXIT_FAILURE);
 	ft_bzero(&app, sizeof(t_app));
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		return (logging_status("main", "Cannot open file"), EXIT_FAILURE);
+		return (logging_err("main", "Cannot open file"), EXIT_FAILURE);
 	flag = parse_scene(fd, &app.scene);
 	close(fd);
 	flag = app_init(&app);

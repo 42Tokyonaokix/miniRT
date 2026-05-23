@@ -23,7 +23,7 @@ static int	dispatch_line(t_scene *scene, char **tok, unsigned char *flags)
 	if (flag != UNKNOWN)
 		return (flag);
 	if (flag == UNKNOWN)
-		logging_status(tok[0], "UNknown identifier");
+		logging_err(tok[0], "UNknown identifier");
 	return (FAILURE);
 }
 
@@ -41,8 +41,8 @@ static int	parse_line(char *line, t_scene *scene, unsigned char *flags)
 	if (len > 0 && head[len - 1] == '\n')
 		head[len - 1] = '\0';
 	tokens = ft_split(head, ' ');
-	if (!tokens || !tokens[0])	
-		return (logging_status("parse_line: ft_split", "FATAL ERROR detected"),
+	if (!tokens || !tokens[0])
+		return (logging_err("parse_line: ft_split", "FATAL ERROR detected"),
 			free_tokens(tokens), FAILURE);
 	ret = dispatch_line(scene, tokens, flags);
 	free_tokens(tokens);
@@ -52,11 +52,11 @@ static int	parse_line(char *line, t_scene *scene, unsigned char *flags)
 static int	check_required(unsigned char flags)
 {
 	if (!(flags & FLAG_A))
-		return (logging_status("ambient", "Missing required"), FAILURE);
+		return (logging_err("ambient", "Missing required"), FAILURE);
 	if (!(flags & FLAG_C))
-		return (logging_status("camera", "Missing required"), FAILURE);
+		return (logging_err("camera", "Missing required"), FAILURE);
 	if (!(flags & FLAG_L))
-		return (logging_status("light", "Missing required"), FAILURE);
+		return (logging_err("light", "Missing required"), FAILURE);
 	return (SUCCESS);
 }
 

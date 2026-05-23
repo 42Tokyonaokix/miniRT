@@ -12,6 +12,7 @@ Replace the current flat, uncolored terminal output with a structured box-panel 
 - Distinguish "preview" (TAB, no render) from "apply" (ENTER, renders) visually
 - Color-code lightweight logs (selection changes, errors) without adding noise
 - Remove unused `t_mode` / mode-switching dead code
+- Consolidate all print-related functions into a dedicated `srcs/print/` directory
 
 ## Architecture
 
@@ -38,7 +39,7 @@ typedef enum e_print_mode { PRINT_PREVIEW, PRINT_APPLY } t_print_mode;
 void print_motion_box(t_input_state input, t_print_mode mode);
 ```
 
-`print_motion_box` lives in a new file `srcs/interact/print_motion_box.c`.
+`print_motion_box` lives in the new `srcs/print/` directory.
 
 ### TAB key — Preview
 
@@ -74,20 +75,42 @@ Format: `│ <TAG>  <arg1>  <dim message>`
 
 `interact_print_selection` and `interact_print_obj` updated to use `log_sel`.
 
+## `srcs/print/` Directory (New)
+
+All print-related functions are consolidated here. A single `includes/print.h` header exposes them all.
+
+| File | Moved from | Contents |
+|------|-----------|----------|
+| `srcs/print/log.c` | `srcs/error/error_message.c` | `logging_status` + `log_sel` / `log_err` / `log_inf` macros |
+| `srcs/print/print_motion.c` | *(new)* | `print_motion_box` |
+| `srcs/print/print_selection.c` | `srcs/interact/select_utils.c` | `interact_print_selection`, `interact_print_obj` |
+| `srcs/print/print_vec3.c` | `srcs/math/vec3_ops.c` | `vec3_print` |
+| `srcs/print/print_double.c` | `srcs/math/vec3_len.c` | `double_print` |
+| `srcs/print/print_hit.c` | `srcs/intersect/find_closest.c` | `hit_print` |
+
+`select_utils.c` retains only non-print logic (`interact_select_ptr`).
+`vec3_ops.c` and `vec3_len.c` lose their print functions but keep all math.
+`error_message.c` is removed (all content moves to `print/log.c`).
+
 ## Files Changed
 
 | File | Change |
 |------|--------|
-| `srcs/interact/print_motion_box.c` | **New** — box rendering logic |
+| `srcs/print/` | **New directory** — all print functions |
+| `includes/print.h` | **New** — single header for all print functions + `t_print_mode` enum + ANSI macros |
 | `srcs/interact/key_press.c` | Replace `interact_tab` → `interact_preview`; update `interact_enter` |
-| `srcs/translate/translate_motion.c` | Remove `print_motion`; add `print_motion_box` call |
-| `srcs/error/error_message.c` | Add ANSI color to `logging_status` |
-| `srcs/interact/select_utils.c` | Use colored log for selection output |
-| `includes/interact.h` | Add `t_print_mode` enum; remove `t_mode` enum and `mode` field from `t_input_state` |
+| `srcs/translate/translate_motion.c` | Remove `print_motion`; call `print_motion_box` instead |
+| `srcs/interact/select_utils.c` | Remove print functions (moved to `print/`); keep `interact_select_ptr` |
+| `srcs/math/vec3_ops.c` | Remove `vec3_print` (moved to `print/`) |
+| `srcs/math/vec3_len.c` | Remove `double_print` (moved to `print/`) |
+| `srcs/intersect/find_closest.c` | Remove `hit_print` (moved to `print/`) |
+| `srcs/error/error_message.c` | **Deleted** — content moved to `srcs/print/log.c` |
+| `includes/interact.h` | Remove `t_mode` enum and `mode` field from `t_input_state`; include `print.h` |
+| `Makefile` | Add `srcs/print/` to source directories |
 
 ## ANSI Color Constants
 
-Define in a shared header (e.g., `includes/color.h` or a new `includes/term_color.h`):
+Defined at the top of `includes/print.h` (not in `includes/color.h`, which is for RGB render colors):
 
 ```c
 #define COL_RESET  "\033[0m"
@@ -101,10 +124,8 @@ Define in a shared header (e.g., `includes/color.h` or a new `includes/term_colo
 #define COL_CYAN   "\033[36m"
 ```
 
-Check `includes/color.h` first — if RGB color helpers already exist there, add ANSI codes to the same file rather than creating a new one.
-
 ## Out of Scope
 
 - HUD / in-place cursor rewrite (requires routing all logging through a single HUD — too invasive given existing debug prints)
 - Changes to MLX window rendering or scene data
-- Removing existing `vec3_print` / `double_print` debug calls in math/intersect files
+- Removing the *call sites* of `vec3_print` / `double_print` / `hit_print` in math/intersect files (only the definitions move; callers stay as-is)

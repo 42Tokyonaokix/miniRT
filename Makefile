@@ -79,6 +79,7 @@ MAND_SRCS = srcs/main.c \
 	srcs/print/print_double.c \
 	srcs/print/print_hit.c \
 	srcs/print/print_selection.c \
+	srcs/print/print_motion.c \
 	srcs/app/app_init.c \
 
 MAND_OBJS = $(MAND_SRCS:.c=.o)

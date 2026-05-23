@@ -26,7 +26,7 @@ t_vec3	vec3_normalize(t_vec3 v1)
 {
 	t_vec3	v2;
 	double	n;
-	
+
 	n = vec3_abs(v1);
 	if (n * n < EPS * EPS)
 		return (ft_bzero(&v2, sizeof(t_vec3)), v2);
@@ -34,14 +34,7 @@ t_vec3	vec3_normalize(t_vec3 v1)
 	return (v2);
 }
 
-void	double_print(double n, char *s)
-{
-	printf("===\033[34mdouble_print\033[0m: \033[31m%s\033[0m===\n", s);
-	printf("%s: %f\n", s, n);
-	ft_putendl_fd("", 1);
-}
-
-/* 
+/*
 int	main(int argc, char **argv)
 {
 	t_vec3	v1;

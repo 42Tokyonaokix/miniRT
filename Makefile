@@ -75,6 +75,8 @@ MAND_SRCS = srcs/main.c \
 	srcs/memory/scene_free.c \
 	srcs/error/exit_error.c \
 	srcs/print/log.c \
+	srcs/print/print_vec3.c \
+	srcs/print/print_double.c \
 	srcs/app/app_init.c \
 
 MAND_OBJS = $(MAND_SRCS:.c=.o)

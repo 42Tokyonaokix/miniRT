@@ -12,11 +12,12 @@
 
 #include "interact.h"
 #include "app.h"
+#include "print.h"
 
 static void	interact_space(t_app *app);
 static void	interact_direct(int keycode, t_app *app);
 static void	interact_enter(t_app *app);
-static void	interact_tab(t_app *app);
+static void	interact_preview(t_app *app);
 
 int	mlx_key_press(int keycode, void *param)
 {
@@ -33,7 +34,7 @@ int	mlx_key_press(int keycode, void *param)
 		|| keycode == UP_ARR || keycode == DOWN_ARR)
 		interact_direct(keycode, app);
 	else if (keycode == TAB)
-		interact_tab(app);
+		interact_preview(app);
 	else if (keycode == SPACE)
 		interact_space(app);
 	else if (keycode == ENTER)
@@ -52,29 +53,20 @@ static void	interact_enter(t_app *app)
 		return ;
 	translate_motion(app->scene.camera, &app->input);
 	interact_motion(&(app->input.selected), (app->input.move));
-	print_motion(app->input);
+	print_motion_box(app->input, PRINT_APPLY);
 	ft_bzero(&(app->input.move), sizeof(t_move));
 	ft_bzero(&app->input.input, sizeof(int) * 5);
 	render_loop(app);
 	mlx_put_image_to_window(app->render.mlx, app->render.win,
-		app->render.img, 0, 0);	
+		app->render.img, 0, 0);
 }
 
-static void	interact_tab(t_app *app)
+static void	interact_preview(t_app *app)
 {
-	t_mode	*mode;
-
-	mode = &(app->input.mode);
-	if (*mode == TRANSLATE)
-	{
-		*mode = ROTATE;
-		logging_status("mode chanded", "ROTATE MODE");
-	}
-	else
-	{
-		logging_status("mode chanded", "TRANSLATE MODE");
-		*mode = TRANSLATE;
-	}
+	if (app->input.selected.kind == SEL_NONE)
+		return ;
+	translate_motion(app->scene.camera, &app->input);
+	print_motion_box(app->input, PRINT_PREVIEW);
 }
 
 static void	interact_direct(int keycode, t_app *app)

@@ -74,12 +74,6 @@ typedef enum e_mousecode
 	H_DOWN = 5,
 }								t_mousecode;
 
-typedef enum e_mode
-{
-	TRANSLATE,
-	ROTATE,
-}								t_mode;
-
 typedef enum e_select_kind
 {
 	SEL_NONE,
@@ -115,7 +109,6 @@ typedef struct s_input_state
 {
 	t_selection					selected;
 	t_move						move;
-	t_mode						mode;
 	int							buf[5];
 	int							input[5];
 }								t_input_state;

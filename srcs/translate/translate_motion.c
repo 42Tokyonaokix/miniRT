@@ -39,21 +39,3 @@ static void	translate_translation(t_camera camera, t_input_state *input)
 	input->move.v_tls = delta;
 }
 
-void	print_motion(t_input_state input)
-{
-	t_select_kind kind;
-	
-	ft_dprintf(STDERR_FILENO, "======%s======\n", "Enter was pressed.");
-	kind = interact_print_selection(input.selected.kind);
-	if (kind == SEL_OBJECT)
-		interact_print_obj(input.selected.obj_type);
-	ft_dprintf(STDERR_FILENO, "\n print_input\n");
-	ft_dprintf(STDERR_FILENO, "T_FORWARD : %d,  T_UP : %d, T_RIGHT : %d\n",
-		input.input[T_FORWARD], input.input[T_UP], input.input[T_RIGHT]);
-	ft_dprintf(STDERR_FILENO, "R_RIGHT : %d,  R_UP : %d\n",
-		input.input[R_UP], input.input[R_RIGHT]);
-	ft_dprintf(STDERR_FILENO, "\n\n print_move\n");
-	vec3_print(input.move.axis, "rotate_axis");
-	double_print(input.move.angle, "rotate_angle");
-	vec3_print(input.move.v_tls, "translate");	
-}

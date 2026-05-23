@@ -28,6 +28,5 @@ void		move_camera(t_camera *camera, t_move move);
 void		move_light(t_light *light, t_move move);
 void		interact_motion(t_selection *sel, t_move move);
 t_vec3		interact_get_center(t_selection sel);
-void		print_motion(t_input_state input);
 
 #endif

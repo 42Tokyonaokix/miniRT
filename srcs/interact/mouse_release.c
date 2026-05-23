@@ -21,8 +21,8 @@ void	mouse_left_release(t_app *app, int x, int y)
 	app->input.input[T_RIGHT] = -(x - app->input.buf[T_RIGHT]);
 	app->input.input[T_UP] = y - app->input.buf[T_UP];
 	translate_motion(app->scene.camera, &app->input);
-	print_motion_box(app->input, PRINT_APPLY);
 	interact_motion(&(app->input.selected), (app->input.move));
+	print_motion_box(app->input, PRINT_APPLY);
 	ft_bzero(&(app->input.move), sizeof(t_move));
 	ft_bzero(&app->input.input, sizeof(int) * 5);
 	ft_bzero(&app->input.buf, sizeof(int) * 5);

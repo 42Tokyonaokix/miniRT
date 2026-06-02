@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/22 02:57:57 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/05/23 23:24:14 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,41 +29,41 @@ typedef struct s_plane			t_plane;
 typedef struct s_cylinder		t_cylinder;
 typedef struct s_app			t_app;
 
-typedef enum e_code
-{
-	ESC = 65307,
-	W = 119,
-	S = 115,
-	A = 97,
-	D = 100,
-	Q = 113,
-	E = 101,
-	TAB = 65289,
-	SPACE = 32,
-	ENTER = 65293,
-	LEFT_ARR = 65361,
-	UP_ARR = 65362,
-	RIGHT_ARR = 65363,
-	DOWN_ARR = 65364,
-}								t_code;
-
-// typedef enum e_keycode
+// typedef enum e_code
 // {
-// 	ESC = 53,
-// 	W = 13,
-// 	S = 1,
-// 	A = 0,
-// 	D = 2,
-// 	Q = 12,
-// 	E = 14,
-// 	TAB = 48,
-// 	SPACE = 49,
-// 	ENTER = 36,
-// 	LEFT_ARR = 123,
-// 	UP_ARR = 126,
-// 	RIGHT_ARR = 124,
-// 	DOWN_ARR = 125,
-// }								t_keycode;
+// 	ESC = 65307,
+// 	W = 119,
+// 	S = 115,
+// 	A = 97,
+// 	D = 100,
+// 	Q = 113,
+// 	E = 101,
+// 	TAB = 65289,
+// 	SPACE = 32,
+// 	ENTER = 65293,
+// 	LEFT_ARR = 65361,
+// 	UP_ARR = 65362,
+// 	RIGHT_ARR = 65363,
+// 	DOWN_ARR = 65364,
+// }								t_code;
+
+typedef enum e_keycode
+{
+	ESC = 53,
+	W = 13,
+	S = 1,
+	A = 0,
+	D = 2,
+	Q = 12,
+	E = 14,
+	TAB = 48,
+	SPACE = 49,
+	ENTER = 36,
+	LEFT_ARR = 123,
+	UP_ARR = 126,
+	RIGHT_ARR = 124,
+	DOWN_ARR = 125,
+}								t_keycode;
 
 typedef enum e_mousecode
 {

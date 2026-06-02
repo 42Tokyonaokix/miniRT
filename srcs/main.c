@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 16:30:00 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/05/22 16:32:46 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/06/02 20:38:05 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ int	main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 		return (logging_err("main", "Cannot open file"), EXIT_FAILURE);
-	flag = parse_scene(fd, &app.scene);
+	if (parse_scene(fd, &app.scene) == FAILURE);
+		return (close(fd), EXIT_FAILURE);
 	close(fd);
-	flag = app_init(&app);
-	if (flag == FAILURE)
+	if (app_init(&app) == FAILURE)
 		return (scene_free(&app.scene), EXIT_FAILURE);
 	render_loop(&app);
 	mlx_put_image_to_window(app.render.mlx, app.render.win, app.render.img, 0, 0);

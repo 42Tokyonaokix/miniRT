@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 16:30:00 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/06/02 20:38:05 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/06/18 17:55:29 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	main(int argc, char **argv)
 {
 	t_app	app;
 	int		fd;
-	int		flag;
 
 	if (argc != 2)
 		return (logging_err("main", "Argument num error"), EXIT_FAILURE);
@@ -47,7 +46,7 @@ int	main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 		return (logging_err("main", "Cannot open file"), EXIT_FAILURE);
-	if (parse_scene(fd, &app.scene) == FAILURE);
+	if (parse_scene(fd, &app.scene) == FAILURE)
 		return (close(fd), EXIT_FAILURE);
 	close(fd);
 	if (app_init(&app) == FAILURE)

@@ -43,7 +43,7 @@ int	parse_direction(char *str, t_vec3 *vec)
 		|| vec->z < -1.0 || vec->z > 1.0)
 		return (logging_err(str, "Direction component out of [-1,1]"), FAILURE);
 	if (vec3_abs(*vec) == 0)
-		return (logging_err(str, "Zero direction vector\n"), FAILURE);
+		return (logging_err(str, "Zero direction vector"), FAILURE);
 	*vec = vec3_normalize(*vec);
 	return (SUCCESS);
 }

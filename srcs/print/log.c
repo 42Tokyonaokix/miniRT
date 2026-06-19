@@ -25,9 +25,9 @@ void	logging_status(char *arg1, char *message)
 void	logging_err(char *arg1, char *message)
 {
 	ft_dprintf(STDERR_FILENO,
-		COL_DIM "│" COL_RESET
-		" " COL_RED COL_BOLD "ERR" COL_RESET
-		"  %s  " COL_DIM "%s" COL_RESET "\n",
+		"Error\n"
+		COL_DIM "│" COL_RESET COL_RED COL_BOLD
+		"  %s  " COL_RESET COL_DIM "%s" COL_RESET "\n",
 		arg1, message);
 }
 

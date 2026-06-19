@@ -41,7 +41,7 @@ int	parse_camera(char **tok, t_camera *camera)
 int	parse_light(char **tok, t_light *light)
 {
 	if (count_tokens(tok) != 4)
-		return (logging_err(*tok, "Invalid light format\n"), FAILURE);
+		return (logging_err(*tok, "Invalid light format"), FAILURE);
 	if (parse_vec3(tok[1], &light->position) != SUCCESS)
 		return (FAILURE);
 	if (parse_ranged_double(tok[2], 0.0, 1.0, &light->ratio) != SUCCESS)

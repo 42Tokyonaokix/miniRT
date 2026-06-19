@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/02 23:20:38 by kesaitou          #+#    #+#              #
-#    Updated: 2026/05/22 02:55:37 by natakaha         ###   ########.fr        #
+#    Updated: 2026/06/17 07:45:00 by kesaitou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = miniRT
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I $(INCS) -I $(LIBFTDIR)/includes -I $(MLXDIR)
+CFLAGS = -Wall -Werror -Wextra -g -I $(INCS) -I $(LIBFTDIR)/includes -I $(MLXDIR)
 
 INCS = includes
 LIBFTDIR = libft
@@ -91,7 +91,7 @@ HEADERS = includes/app.h \
           includes/intersect.h \
           includes/math_utils.h \
           includes/memory.h \
-          includes/mlx_utils.h \
+          includes/mlx_ctx.h \
           includes/parser.h \
           includes/print.h \
           includes/render.h \

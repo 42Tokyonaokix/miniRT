@@ -35,7 +35,7 @@ int	parse_plane(char **tok, t_plane **planes)
 	t_plane	*node;
 
 	if (count_tokens(tok) != 4)
-		return (logging_err("plane", "Invalid plane format\n"), FAILURE);
+		return (logging_err("plane", "Invalid plane format"), FAILURE);
 	node = malloc(sizeof(t_plane));
 	if (!node)
 		return (logging_err("parse_plane", "FATAL ERROR detected"), FAILURE);

@@ -94,7 +94,7 @@ int	parse_color(char *str, t_color *color, char *obj_type)
 		return (logging_err(obj_type, "Invalid color value"), FAILURE);
 	if (rgb[0] < 0 || rgb[0] > 255 || rgb[1] < 0 || rgb[1] > 255
 		|| rgb[2] < 0 || rgb[2] > 255)
-		return (logging_err(obj_type, "Color out of range\n"), FAILURE);
+		return (logging_err(obj_type, "Color out of range"), FAILURE);
 	color->r = rgb[0] / 255.0;
 	color->g = rgb[1] / 255.0;
 	color->b = rgb[2] / 255.0;

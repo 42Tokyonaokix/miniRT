@@ -51,10 +51,12 @@ double	parse_atof(char *str, int *error);
 int		parse_vec3(char *str, t_vec3 *vec);
 int		parse_color(char *str, t_color *color, char *obj_type);
 int		is_valid_float(char *str);
+bool	is_valid_comma(char *str);
 
 int		parse_ranged_double(char *str, double min, double max, double *out);
 int		parse_positive_double(char *str, double *out);
 int		parse_direction(char *str, t_vec3 *vec);
+int		assign_color(t_color *color, double *rgb, char *obj_type);
 
 char	*skip_space_tabs(char *str);
 void	free_tokens(char **tokens);

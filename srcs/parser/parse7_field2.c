@@ -47,3 +47,14 @@ int	parse_direction(char *str, t_vec3 *vec)
 	*vec = vec3_normalize(*vec);
 	return (SUCCESS);
 }
+
+int	assign_color(t_color *color, double *rgb, char *obj_type)
+{
+	if (rgb[0] < 0 || rgb[0] > 255 || rgb[1] < 0 || rgb[1] > 255
+		|| rgb[2] < 0 || rgb[2] > 255)
+		return (logging_err(obj_type, "Color out of range"), FAILURE);
+	color->r = rgb[0] / 255.0;
+	color->g = rgb[1] / 255.0;
+	color->b = rgb[2] / 255.0;
+	return (SUCCESS);
+}

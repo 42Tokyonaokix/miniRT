@@ -54,6 +54,7 @@ MAND_SRCS = srcs/main.c \
 	srcs/parser/parse6_field.c \
 	srcs/parser/parse7_field2.c \
 	srcs/parser/utils1_line.c \
+	srcs/parser/utils2_valid.c \
 	srcs/interact/key_press.c \
 	srcs/interact/get_center.c \
 	srcs/interact/interact_motion.c \

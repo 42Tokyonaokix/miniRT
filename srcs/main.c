@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 16:30:00 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/06/18 17:55:29 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/06/20 04:48:28 by kesaitou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "app.h"
 #include "ft_printf.h"
 #include "libft.h"
-#include "parser.h"
 #include "memory.h"
 #include "mlx_ctx.h"
-#include "app.h"
+#include "parser.h"
 #include <fcntl.h>
 #include <stdbool.h>
 #include <unistd.h>
@@ -47,12 +47,13 @@ int	main(int argc, char **argv)
 	if (fd < 0)
 		return (logging_err("main", "Cannot open file"), EXIT_FAILURE);
 	if (parse_scene(fd, &app.scene) == FAILURE)
-		return (close(fd), EXIT_FAILURE);
+		return (close(fd), scene_free(&app.scene), EXIT_FAILURE);
 	close(fd);
 	if (app_init(&app) == FAILURE)
 		return (scene_free(&app.scene), EXIT_FAILURE);
 	render_loop(&app);
-	mlx_put_image_to_window(app.render.mlx, app.render.win, app.render.img, 0, 0);
+	mlx_put_image_to_window(app.render.mlx, app.render.win, app.render.img, 0,
+		0);
 	mlx_loop(app.render.mlx);
 	scene_free(&app.scene);
 }

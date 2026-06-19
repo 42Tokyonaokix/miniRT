@@ -6,7 +6,7 @@
 /*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/15 00:30:00 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/06/20 03:08:15 by kesaitou         ###   ########.fr       */
+/*   Updated: 2026/06/20 04:07:15 by kesaitou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	is_valid_float(char *str)
 	i = 0;
 	if (str[i] == '+' || str[i] == '-')
 		i++;
-	if (!str[i])
+	if (!str[i] || (str[i] == '.' && str[i + 1] == '\0'))
 		return (FAILURE);
 	dot = 0;
 	while (str[i])
@@ -49,7 +49,7 @@ double	parse_atof(char *str, int *error)
 	return (ft_atof(str));
 }
 
-//カンマは２個だけ。
+// カンマは２個だけ。
 bool	is_valid_comma(char *str)
 {
 	int	i;

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/02 23:20:38 by kesaitou          #+#    #+#              #
-#    Updated: 2026/06/17 07:45:00 by kesaitou         ###   ########.fr        #
+#    Updated: 2026/06/24 03:21:57 by natakaha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,15 +17,10 @@ CFLAGS = -Wall -Werror -Wextra -g -I $(INCS) -I $(LIBFTDIR)/includes -I $(MLXDIR
 INCS = includes
 LIBFTDIR = libft
 LIBFT = $(LIBFTDIR)/libft.a
-UNAME_S := $(shell uname)
-ifeq ($(UNAME_S),Darwin)
-MLXDIR = minilibx
-MLX_LIBS = -framework OpenGL -framework AppKit -lm
-else
+
 MLXDIR = minilibx-linux
 MLX_LIBS = -lXext -lX11 -lm -lz
-endif
-MLX = $(MLXDIR)/libmlx.a
+
 
 LDFLAGS = -L $(LIBFTDIR) -L $(MLXDIR)
 LDLIBS = -lft -lmlx $(MLX_LIBS)

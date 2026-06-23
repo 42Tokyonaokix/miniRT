@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2_valid.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kesaitou <kesaitou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/15 00:30:00 by kesaitou          #+#    #+#             */
-/*   Updated: 2026/06/20 04:17:53 by kesaitou         ###   ########.fr       */
+/*   Updated: 2026/06/23 22:39:02 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ double	parse_atof(char *str, int *error)
 	return (ft_atof(str));
 }
 
-// カンマは２個だけ。
 bool	is_valid_comma(char *str)
 {
 	int	i;

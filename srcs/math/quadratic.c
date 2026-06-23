@@ -27,10 +27,10 @@ double	quad_discriminant(double a, double b, double c)
 
 double	quad_min_solution(double a, double b, double c)
 {
-	double d;
-	double n1;
-	double n2;
-	
+	double	d;
+	double	n1;
+	double	n2;
+
 	if (a == 0 && b == 0)
 		return (ERRORNO);
 	if (a == 0)
@@ -58,7 +58,7 @@ double	min_double(double d1, double d2)
 	return (d2);
 }
 
-/* 
+/*
 int main(int argc, char **argv)
 {
 	double a;

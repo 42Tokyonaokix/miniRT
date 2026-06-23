@@ -20,7 +20,7 @@ void	interact_motion(t_selection *sel, t_move move)
 		move_camera(sel->obj_ptr, move);
 	else if (sel->kind == SEL_LIGHT)
 		move_light(sel->obj_ptr, move);
-	else if (sel->kind == SEL_OBJECT && sel->obj_type == OBJ_SPHERE)	
+	else if (sel->kind == SEL_OBJECT && sel->obj_type == OBJ_SPHERE)
 		move_sphere(sel->obj_ptr, move);
 	else if (sel->kind == SEL_OBJECT && sel->obj_type == OBJ_PLANE)
 		move_plane(sel->obj_ptr, move);

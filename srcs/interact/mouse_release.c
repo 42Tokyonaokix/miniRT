@@ -28,11 +28,11 @@ void	mouse_left_release(t_app *app, int x, int y)
 	ft_bzero(&app->input.buf, sizeof(int) * 5);
 	render_loop(app);
 	mlx_put_image_to_window(app->render.mlx,
-		app->render.win,app->render.img, 0, 0);	
+		app->render.win, app->render.img, 0, 0);
 }
 
 void	mouse_right_release(t_app *app, int x, int y)
-{	
+{
 	if (app->input.selected.kind == SEL_NONE)
 		return ;
 	app->input.input[R_RIGHT] = -(x - app->input.buf[R_RIGHT]);
@@ -45,5 +45,5 @@ void	mouse_right_release(t_app *app, int x, int y)
 	ft_bzero(&app->input.buf, sizeof(int) * 5);
 	render_loop(app);
 	mlx_put_image_to_window(app->render.mlx,
-		app->render.win,app->render.img, 0, 0);
+		app->render.win, app->render.img, 0, 0);
 }

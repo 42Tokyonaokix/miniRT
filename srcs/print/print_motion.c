@@ -5,14 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/23 by natakaha                  #+#    #+#             */
-/*   Updated: 2026/05/23 by natakaha                 ###   ########.fr       */
+/*   Created: 2026/05/23 00:00:00 by natakaha          #+#    #+#             */
+/*   Updated: 2026/05/23 00:00:00 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "print.h"
 #include <math.h>
 #include <stdio.h>
+
+static char	*selection_label(t_input_state input);
+static char	*axis_label(t_vec3 axis);
+static void	print_motion_header(t_print_mode mode);
+static void	print_motion_info(t_input_state input, double angle_deg);
 
 static char	*selection_label(t_input_state input)
 {
@@ -47,11 +52,8 @@ static char	*axis_label(t_vec3 axis)
 	return ("z-axis");
 }
 
-void	print_motion_box(t_input_state input, t_print_mode mode)
+static void	print_motion_header(t_print_mode mode)
 {
-	double	angle_deg;
-
-	angle_deg = input.move.angle * 180.0 / M_PI;
 	dprintf(STDERR_FILENO,
 		COL_BLUE "╔══════════════════════════════════════\n" COL_RESET);
 	if (mode == PRINT_PREVIEW)
@@ -66,6 +68,10 @@ void	print_motion_box(t_input_state input, t_print_mode mode)
 			COL_DIM "ENTER — rendering...\n" COL_RESET);
 	dprintf(STDERR_FILENO,
 		COL_BLUE "╠══════════════════════════════════════\n" COL_RESET);
+}
+
+static void	print_motion_info(t_input_state input, double angle_deg)
+{
 	dprintf(STDERR_FILENO,
 		COL_BLUE "║" COL_RESET "  "
 		COL_DIM "Selection" COL_RESET "  "
@@ -87,6 +93,15 @@ void	print_motion_box(t_input_state input, t_print_mode mode)
 		COL_MAG "%s" COL_RESET "  "
 		COL_BLUE "%.1f°\n" COL_RESET,
 		axis_label(input.move.axis), angle_deg);
+}
+
+void	print_motion_box(t_input_state input, t_print_mode mode)
+{
+	double	angle_deg;
+
+	angle_deg = input.move.angle * 180.0 / M_PI;
+	print_motion_header(mode);
+	print_motion_info(input, angle_deg);
 	dprintf(STDERR_FILENO,
 		COL_BLUE "║" COL_RESET "  "
 		COL_DIM "Translate" COL_RESET "  "

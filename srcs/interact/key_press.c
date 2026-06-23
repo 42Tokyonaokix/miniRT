@@ -44,7 +44,7 @@ int	mlx_key_press(int keycode, void *param)
 
 static void	interact_space(t_app *app)
 {
-	interact_next_selection(&app->scene, &app->input.selected);		
+	interact_next_selection(&app->scene, &app->input.selected);
 }
 
 static void	interact_enter(t_app *app)

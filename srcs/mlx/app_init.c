@@ -53,8 +53,8 @@ int	mlx_ctx_init(t_render_ctx *ren)
 		return (logging_status("app_init", "mlx_new_img failed"),
 			mlx_destroy_window(ren->mlx, ren->win), FAILURE);
 	logging_status("app_init: mlx_new_img", "proceeded");
-	ren->addr = mlx_get_data_addr(ren->img, &ren->bpp, &ren->line_len,
-		&ren->endian);
+	ren->addr = mlx_get_data_addr(ren->img, &ren->bpp,
+			&ren->line_len, &ren->endian);
 	if (ren->addr == NULL)
 		return (logging_status("app_init",
 				"mlx_get_data_addr failed"),

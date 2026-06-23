@@ -36,7 +36,7 @@ t_color	color_mul(t_color c1, t_color c2)
 
 	c3.b = c1.b * c2.b;
 	c3.g = c1.g * c2.g;
-	c3.r = c1.r *  c2.r;
+	c3.r = c1.r * c2.r;
 	return (c3);
 }
 
@@ -71,4 +71,3 @@ int	color_int(t_color color)
 	int_c = r << 16 | g << 8 | b;
 	return (int_c);
 }
-	

@@ -17,7 +17,7 @@ t_vec3	vec3_hor(t_vec3 v, t_vec3 axis)
 	t_vec3	v_hor;
 	double	den;
 	double	scale;
-	
+
 	den = vec3_sq(axis);
 	if (den < EPS * EPS)
 		return ((t_vec3){0.0, 0.0, 0.0});
@@ -36,7 +36,7 @@ t_vec3	vec3_ver(t_vec3 v, t_vec3 axis)
 	return (v_ver);
 }
 
-/* 
+/*
 int	main(int argc, char **argv)
 {
 	t_vec3	v1;
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 	t_vec3	v3;
 	t_vec3	v4;
 	t_vec3	v5;
-	
+
 	if (argc != 7)
 		return (ft_dprintf(2, "ERROR!\n"), EXIT_FAILURE);
 	v1.x = ft_atoi(argv[1]);

@@ -19,7 +19,7 @@ static void	interact_mouse_release(t_app *app, int button, int x, int y);
 int	mlx_mouse_press(int button, int x, int y, void *param)
 {
 	t_app			*app;
-	
+
 	app = (t_app *)param;
 	interact_mouse_press(app, button, x, y);
 	return (0);

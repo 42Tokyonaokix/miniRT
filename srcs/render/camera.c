@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "render.h"
+#include "render.h"
 
 void	camera_build_basis(t_camera	*camera)
 {
 	t_vec3	world_up;
-	
+
 	ft_bzero(&world_up, sizeof(t_vec3));
 	world_up.z = 1;
 	camera->forward = vec3_normalize(camera->forward);
@@ -48,7 +48,7 @@ t_ray	camera_pixel_ray(t_camera camera, int x, int y)
 // int	main(int argc, char **argv)
 // {
 // 	t_camera	camera;
-	
+
 // 	ft_bzero(&camera, sizeof(t_camera));
 // 	if (argc != 4)
 // 		return (ft_putendl_fd("ERROR!", 2), EXIT_FAILURE);

@@ -18,7 +18,7 @@ t_hit	ray_sphere_hit(t_ray ray, t_sphere *sphere)
 {
 	double	t;
 	t_hit	hit;
-	
+
 	t = ray_sphere_t(ray, *sphere);
 	ft_bzero(&hit, sizeof(t_hit));
 	if (t < 0)
@@ -60,7 +60,7 @@ static t_vec3	ray_sphere_normal(t_sphere sphere, t_vec3 point)
 	return (n);
 }
 
-/* 
+/*
 int	main(int argc, char **argv)
 {
 	t_ray		ray;
@@ -84,8 +84,8 @@ int	main(int argc, char **argv)
 	sphere.center.y = ft_atoi(argv[8]);
 	sphere.center.z = ft_atoi(argv[9]);
 	vec3_print(sphere.center, "sphere.center");
-	sphere.radius = ft_atoi(argv[10]);	
+	sphere.radius = ft_atoi(argv[10]);
 	hit = ray_sphere_hit(ray, &sphere);
 	hit_print(hit, "hit");
-} 
+}
  */

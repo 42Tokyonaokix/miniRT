@@ -18,9 +18,9 @@ int	mlx_event_hook(t_app *app)
 	t_render_ctx	mlx;
 
 	mlx = app->render;
-	mlx_hook(mlx.win, 2, 1<<0, mlx_key_press, app);
-	mlx_hook(mlx.win, 4, 1<<2, mlx_mouse_press,app);
-	mlx_hook(mlx.win, 5, 1<<3, mlx_mouse_release,app);
+	mlx_hook(mlx.win, 2, 1 << 0, mlx_key_press, app);
+	mlx_hook(mlx.win, 4, 1 << 2, mlx_mouse_press, app);
+	mlx_hook(mlx.win, 5, 1 << 3, mlx_mouse_release, app);
 	mlx_hook(mlx.win, 17, 0, (int (*)(void *))app_free, app);
 	return (SUCCESS);
 }

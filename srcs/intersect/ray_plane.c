@@ -82,5 +82,5 @@ int	main(int argc, char **argv)
 	vec3_print(plane.normal, "plane.normal");
 	hit = ray_plane_hit(ray, &plane);
 	hit_print(hit, "hit");
-} 
+}
 */

@@ -14,13 +14,13 @@
 
 void	move_sphere(t_sphere *sphere, t_move move)
 {
-	sphere->center = vec3_add(sphere->center, move.v_tls);	
+	sphere->center = vec3_add(sphere->center, move.v_tls);
 }
 
 void	move_plane(t_plane *plane, t_move move)
 {
 	plane->point = vec3_add(plane->point, move.v_tls);
-	plane->normal = vec3_rodriges(plane->normal, move.axis, move.angle);	
+	plane->normal = vec3_rodriges(plane->normal, move.axis, move.angle);
 }
 
 void	move_cylinder(t_cylinder *cylinder, t_move move)

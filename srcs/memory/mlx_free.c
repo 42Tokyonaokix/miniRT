@@ -16,6 +16,4 @@ void	mlx_destroy_mem(t_render_ctx *ren)
 {
 	mlx_destroy_image(ren->mlx, ren->img);
 	mlx_destroy_window(ren->mlx, ren->win);
-	// mlx_destroy_display(ren->mlx);
 }
-

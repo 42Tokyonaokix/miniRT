@@ -25,8 +25,8 @@ static void	translate_rotation(t_camera camera, t_input_state *input)
 {
 	double	distance;
 
-	input->move.axis = (detect_axis(camera,
-			input->input[R_UP], input->input[R_RIGHT]));
+	input->move.axis = detect_axis(camera, input->input[R_UP],
+			input->input[R_RIGHT]);
 	distance = detect_distance(input->input[R_UP], input->input[R_RIGHT]);
 	input->move.angle = distance * M_PI / WIN_H * 10;
 }
@@ -34,8 +34,9 @@ static void	translate_rotation(t_camera camera, t_input_state *input)
 static void	translate_translation(t_camera camera, t_input_state *input)
 {
 	t_vec3	delta;
-		
-	delta = vec3_add(vec3_tlanslated(camera, *input), vec3_forward(camera, *input));
-	input->move.v_tls = delta;
-}
+	t_vec3	fwd;
 
+	delta = vec3_tlanslated(camera, *input);
+	fwd = vec3_forward(camera, *input);
+	input->move.v_tls = vec3_add(delta, fwd);
+}

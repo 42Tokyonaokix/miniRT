@@ -37,7 +37,7 @@ static t_selection	detect_pixel_selection(t_app *app, int x, int y)
 
 	ray = camera_pixel_ray(app->scene.camera, x, y);
 	hit = ray_closest_hit(ray, app->scene.spheres,
-	app->scene.planes, app->scene.cylinders);
+			app->scene.planes, app->scene.cylinders);
 	if (hit.obj_type == OBJ_NONE)
 	{
 		selected.kind = SEL_CAMERA;

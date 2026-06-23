@@ -16,7 +16,7 @@ t_vec3	ray_to_vec3(t_ray ray, double t)
 {
 	t_vec3	vtmp;
 	t_vec3	v1;
-	
+
 	vtmp = vec3_scale(ray.dir, t);
 	v1 = vec3_add(vtmp, ray.origin);
 	return (v1);
@@ -25,7 +25,7 @@ t_vec3	ray_to_vec3(t_ray ray, double t)
 static t_hit	hit_min(t_hit h_min, t_hit h_tmp)
 {
 	if (h_tmp.obj_type == OBJ_NONE)
-		return (h_min);	
+		return (h_min);
 	else if (h_min.obj_type == OBJ_NONE)
 		return (h_tmp);
 	else if (h_min.t > h_tmp.t)
@@ -38,19 +38,19 @@ t_hit	ray_closest_hit(t_ray ray, t_sphere *sphere,
 {
 	t_hit	h_tmp;
 	t_hit	h_min;
-	
+
 	ft_bzero(&h_tmp, sizeof(t_hit));
 	ft_bzero(&h_min, sizeof(t_hit));
 	while (sphere)
 	{
 		h_tmp = ray_sphere_hit(ray, sphere);
-		h_min = hit_min(h_min, h_tmp);	
+		h_min = hit_min(h_min, h_tmp);
 		sphere = sphere->next;
 	}
 	while (plane)
 	{
 		h_tmp = ray_plane_hit(ray, plane);
-		h_min = hit_min(h_min, h_tmp);	
+		h_min = hit_min(h_min, h_tmp);
 		plane = plane->next;
 	}
 	while (cylinder)

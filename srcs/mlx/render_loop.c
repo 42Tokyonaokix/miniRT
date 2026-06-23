@@ -17,7 +17,7 @@ void	render_loop(t_app *app)
 {
 	int	x;
 	int	y;
-	
+
 	y = 0;
 	while (y < WIN_H)
 	{

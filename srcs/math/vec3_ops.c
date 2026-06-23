@@ -15,7 +15,7 @@
 t_vec3	vec3_add(t_vec3 v1, t_vec3 v2)
 {
 	t_vec3	v3;
-	
+
 	v3.x = v1.x + v2.x;
 	v3.y = v1.y + v2.y;
 	v3.z = v1.z + v2.z;
@@ -25,7 +25,7 @@ t_vec3	vec3_add(t_vec3 v1, t_vec3 v2)
 t_vec3	vec3_sub(t_vec3 v1, t_vec3 v2)
 {
 	t_vec3	v3;
-	
+
 	v3.x = v1.x - v2.x;
 	v3.y = v1.y - v2.y;
 	v3.z = v1.z - v2.z;

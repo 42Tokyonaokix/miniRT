@@ -37,7 +37,7 @@ void	interact_next_selection(t_scene *scene, t_selection *current)
 	if (current->kind == SEL_OBJECT)
 	{
 		interact_next_obj(scene, current);
-		interact_print_obj(current->obj_type);			
+		interact_print_obj(current->obj_type);
 	}
 }
 
@@ -74,7 +74,7 @@ static void	interact_next_obj(t_scene *scene, t_selection *current)
 	t_sphere	*sphere;
 	t_plane		*plane;
 	t_cylinder	*cylinder;
-	
+
 	if (current->obj_type == OBJ_NONE)
 		interact_valid_obj(scene, current);
 	else if (current->obj_type == OBJ_SPHERE)

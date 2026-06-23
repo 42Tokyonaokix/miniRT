@@ -42,6 +42,7 @@ MAND_SRCS = srcs/main.c \
 	srcs/intersect/ray_sphere.c \
 	srcs/intersect/ray_cylinder.c \
 	srcs/intersect/ray_cylinder_t.c \
+	srcs/intersect/ray_cylinder_check.c \
 	srcs/intersect/ray_plane.c \
 	srcs/render/camera.c \
 	srcs/render/camera_utils.c \

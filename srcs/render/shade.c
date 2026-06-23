@@ -13,7 +13,7 @@
 #include "render.h"
 
 static t_color	render_exposed_color(t_hit hit, t_scene scene);
-static bool	render_exposed_light(t_hit hit, t_light light, t_scene scene);
+static bool		render_exposed_light(t_hit hit, t_light light, t_scene scene);
 static t_color	render_shade_color(t_hit hit, t_scene scene);
 static t_color	render_obj_none(t_scene scene);
 
@@ -21,7 +21,7 @@ int	render_detect_color(t_hit hit, t_scene scene)
 {
 	t_color	c_color;
 	int		c_int;
-	
+
 	if (hit.obj_type == OBJ_NONE)
 		c_color = render_obj_none(scene);
 	else if (render_exposed_light(hit, scene.light, scene) == false)
@@ -37,7 +37,7 @@ static t_color	render_obj_none(t_scene scene)
 	t_color	c;
 
 	ft_bzero(&c, sizeof(t_color));
-	return (c);	
+	return (c);
 	(void)scene;
 }
 
@@ -51,7 +51,8 @@ static bool	render_exposed_light(t_hit hit, t_light light, t_scene scene)
 	if (vec3_sq(light_ray.dir) < EPS * EPS)
 		return (false);
 	light_ray.origin = light.position;
-	c_hit = ray_closest_hit(light_ray, scene.spheres, scene.planes, scene.cylinders);
+	c_hit = ray_closest_hit(light_ray, scene.spheres,
+			scene.planes, scene.cylinders);
 	v_tmp = vec3_sub(hit.point, c_hit.point);
 	if (vec3_sq(v_tmp) < EPS * EPS)
 		return (true);
@@ -71,11 +72,13 @@ static t_color	render_exposed_color(t_hit hit, t_scene scene)
 	t_color		c_dif;
 	t_color		c_amb;
 	t_light		light;
+	t_vec3		dir;
 	double		l_scale;
 
 	light = scene.light;
-	c_amb = render_shade_color(hit, scene); 
-	l_scale = vec3_dot(vec3_normalize(vec3_sub(light.position, hit.point)), hit.normal) * light.ratio;
+	c_amb = render_shade_color(hit, scene);
+	dir = vec3_normalize(vec3_sub(light.position, hit.point));
+	l_scale = vec3_dot(dir, hit.normal) * light.ratio;
 	if (l_scale < 0)
 		l_scale = 0;
 	c_dif = color_scale(color_mul(hit.obj_color, light.color), l_scale);

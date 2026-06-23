@@ -27,14 +27,14 @@ t_vec3	vec3_cross(t_vec3 v1, t_vec3 v2)
 	return (v3);
 }
 
-/* 
+/*
 int	main(int argc, char **argv)
 {
 	t_vec3	v1;
 	t_vec3	v2;
 	t_vec3	v3;
 	double	n;
-	
+
 	if (argc != 8)
 		return (ft_dprintf(2, "ERROR!\n"), EXIT_FAILURE);
 	v1.x = ft_atoi(argv[1]);

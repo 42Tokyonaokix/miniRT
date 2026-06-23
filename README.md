@@ -121,7 +121,6 @@ The script starts XQuartz, builds the `minirt-dev` image from `Dockerfile` if ne
 - [Scratchapixel](https://www.scratchapixel.com/) — ray tracing, ray–sphere / ray–plane / ray–cylinder intersection, and shading fundamentals.
 - [Rodrigues' rotation formula](https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula) — basis for the rotation transform (`srcs/math/rodriges.c`).
 - MiniLibX documentation — window, image and event handling.
-- Internal design notes for this project are kept in [`arcchitecture-design/`](arcchitecture-design/).
 
 ### Use of AI
 

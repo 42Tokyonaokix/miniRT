@@ -26,6 +26,8 @@ t_hit	ray_sphere_hit(t_ray ray, t_sphere *sphere)
 	hit.t = t;
 	hit.point = ray_to_vec3(ray, t);
 	hit.normal = ray_sphere_normal(*sphere, hit.point);
+	if (vec3_dot(ray.dir, hit.normal) > 0)
+		hit.normal = vec3_scale(hit.normal, -1);
 	hit.obj_type = OBJ_SPHERE;
 	hit.obj_ptr = sphere;
 	hit.obj_color = sphere->color;

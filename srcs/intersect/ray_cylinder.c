@@ -32,6 +32,8 @@ t_hit	ray_cylinder_hit(t_ray ray, t_cylinder *cyl)
 		hit.normal = cylinder_cap_normal(hit.point, *cyl);
 	else
 		hit.normal = cylinder_side_normal(hit.point, *cyl);
+	if (vec3_dot(ray.dir, hit.normal) > 0)
+		hit.normal = vec3_scale(hit.normal, -1);
 	hit.obj_type = OBJ_CYLINDER;
 	hit.obj_ptr = cyl;
 	hit.obj_color = cyl->color;

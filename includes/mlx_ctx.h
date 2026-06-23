@@ -44,14 +44,14 @@ typedef struct s_render_ctx	t_render_ctx;
 
 typedef struct s_render_ctx
 {
-    void    *mlx;
-    void    *win;
-    void    *img;
-    char    *addr;
-    int     bpp;
-    int     line_len;
-    int     endian;
-}   t_render_ctx;
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_render_ctx;
 
 /* ========== MiniLibX Window & Image ========== */
 
@@ -66,6 +66,6 @@ int		pixel_detect_color(t_scene scene, int x, int y);
 
 /* ========== Main Loop Functions ========== */
 void	render_loop(t_app *app);
-int	    mlx_event_hook(t_app *app);
+int		mlx_event_hook(t_app *app);
 
 #endif

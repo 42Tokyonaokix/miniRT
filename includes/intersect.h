@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/15 15:25:52 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/06/23 19:08:23 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 typedef struct s_sphere
 {
-	struct s_sphere		*next;
+	struct s_sphere	*next;
 	t_vec3				center;
 	double				radius;
 	t_color				color;
@@ -30,7 +30,7 @@ typedef struct s_sphere
 
 typedef struct s_plane
 {
-	struct s_plane		*next;
+	struct s_plane	*next;
 	t_vec3				point;
 	t_vec3				normal;
 	t_color				color;
@@ -49,7 +49,7 @@ typedef struct s_cylinder
 typedef enum e_obj_type
 {
 	OBJ_NONE = 0,
-    OBJ_SPHERE,
+	OBJ_SPHERE,
 	OBJ_PLANE,
 	OBJ_CYLINDER
 }						t_obj_type;
@@ -79,8 +79,8 @@ typedef struct s_hit
 typedef	struct s_objects
 {
 	t_plane				*plane;
-	t_sphere			*sphere;
-	t_cylinder			*cylinder;	
+	t_sphere				*sphere;
+	t_cylinder			*cylinder;
 }						t_objects;
 
 /* ========== Ray–Sphere ========== */
@@ -105,7 +105,8 @@ t_vec3					ray_to_vec3(t_ray ray, double t);
 void					hit_print(t_hit hit, char *s);
 
 /* ========== closest hit ========== */
-t_hit	ray_closest_hit(t_ray ray, t_sphere *sphere,
-	t_plane *plane, t_cylinder *cylinder);
+t_hit				ray_closest_hit(t_ray ray, t_sphere *sphere,
+																		t_plane *plane,
+																		t_cylinder *cylinder);
 
 #endif

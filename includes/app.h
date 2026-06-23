@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 22:05:00 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/18 14:51:47 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/06/23 19:08:02 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,10 @@
 
 typedef struct s_app
 {
-    t_scene         scene;
-    t_render_ctx    render;
-    t_input_state   input;
-}   t_app;
-
-
+	t_scene			scene;
+	t_render_ctx	render;
+	t_input_state	input;
+}	t_app;
 
 int	app_init(t_app *app);
 

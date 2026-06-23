@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/13 by natakaha                  #+#    #+#             */
-/*   Updated: 2026/05/13 by natakaha                 ###   ########.fr       */
+/*   Created: 2026/05/13 00:00:00 by natakaha          #+#    #+#             */
+/*   Updated: 2026/05/13 00:00:00 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@
 /* ========== Numeric Helpers ========== */
 double	min_double(double d1, double d2);
 
-/* ========== Quadratic Equation Solver ========== */
-
-int		solve_quadratic(double a, double b, double c, double *t0, double *t1);
 double	quad_min_solution(double a, double b, double c);
 
 #endif

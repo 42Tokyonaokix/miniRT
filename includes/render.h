@@ -6,7 +6,7 @@
 /*   By: natakaha <natakaha@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 21:02:06 by natakaha          #+#    #+#             */
-/*   Updated: 2026/05/21 00:37:46 by natakaha         ###   ########.fr       */
+/*   Updated: 2026/06/23 19:08:23 by natakaha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,24 @@
 
 typedef struct s_scene
 {
-    t_ambient   ambient;
-    t_camera    camera;
-    t_light     light;
-    t_sphere    *spheres;
-    t_plane     *planes;
-    t_cylinder  *cylinders;
-}           t_scene;
+	t_ambient		ambient;
+	t_camera		camera;
+	t_light			light;
+	t_sphere		*spheres;
+	t_plane		*planes;
+	t_cylinder		*cylinders;
+}	t_scene;
 
 /* ========== Camera utils Functions ========== */
 double		camera_half_w(t_camera camera);
 double		camera_half_h(t_camera camera);
 
 /* ========== Camera Functions ========== */
-void        camera_build_basis(t_camera	*camera);
+void		camera_build_basis(t_camera *camera);
 
 /* ========== Shading Functions ========== */
 t_ray		generate_primary_ray(const t_camera *camera, int x, int y);
-t_ray   	camera_pixel_ray(t_camera camera, int x, int y);
-int	render_detect_color(t_hit hit, t_scene scene);
+t_ray		camera_pixel_ray(t_camera camera, int x, int y);
+int			render_detect_color(t_hit hit, t_scene scene);
 
 #endif

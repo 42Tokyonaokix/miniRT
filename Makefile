@@ -19,6 +19,7 @@ LIBFTDIR = libft
 LIBFT = $(LIBFTDIR)/libft.a
 
 MLXDIR = minilibx-linux
+MLX = $(MLXDIR)/libmlx.a
 MLX_LIBS = -lXext -lX11 -lm -lz
 
 
